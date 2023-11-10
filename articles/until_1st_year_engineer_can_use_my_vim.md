@@ -1,5 +1,5 @@
 ---
-title: "エンジニア1年目が自分のvimを使えるまで"
+title: "エンジニア1年目で自分のvimを使えるまでの活動"
 emoji: "🔰"
 type: "idea" # tech: 技術記事 / idea: アイデア
 topics: ["ポエム", "初心者", "Vim", "Neovim"]
