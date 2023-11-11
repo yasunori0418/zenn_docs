@@ -6,6 +6,12 @@ topics: ["ポエム", "初心者", "Vim", "Neovim"]
 published: false
 ---
 
+<!-- textlint-disable -->
+:::message
+この記事は[Vim駅伝](https://vim-jp.org/ekiden/)の2023-11-22向けの記事です。
+:::
+<!-- textlint-enable -->
+
 ## はじめに
 
 ## 環境
