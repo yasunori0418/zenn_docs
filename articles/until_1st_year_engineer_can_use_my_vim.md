@@ -14,14 +14,14 @@ published: false
 
 <!-- textlint-disable -->
 
-:::details 告知的な何か
-
+::::details 告知的な何か
 :::message
 Zennでの記事投稿ははじめてになりますが、
 [Vim駅伝](https://vim-jp.org/ekiden/)への寄稿というタイミングもあり、今後はこちらに投稿しようと思います。
 
 以前までの記事は、[こちら](https://qiita.com/yasunori-kirin0418)にあります。
 :::
+::::
 <!-- textlint-enable -->
 
 ## はじめに
