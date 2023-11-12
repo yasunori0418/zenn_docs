@@ -7,7 +7,7 @@ topics:
   - 初心者
   - Vim
   - Neovim
-published: false
+published: true
 published_at: 2023-11-22
 ---
 
