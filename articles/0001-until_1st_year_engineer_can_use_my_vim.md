@@ -8,6 +8,7 @@ topics:
   - Vim
   - Neovim
 published: true
+publication_name: "vim_jp"
 published_at: 2023-11-22
 ---
 
