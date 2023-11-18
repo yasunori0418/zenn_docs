@@ -1,13 +1,27 @@
 ---
 title: "vimを切っ掛けにエンジニアになった話"
-emoji: "😸"
+emoji: "🔰"
 type: "idea" # tech: 技術記事 / idea: アイデア
 topics:
   - ポエム
+  - 初心者
   - Vim
   - Neovim
-published: false
+published: true
+publication_name: "vim_jp"
+published_at: 2023-11-27
 ---
+
+<!-- textlint-disable -->
+:::message
+この記事は[Vim駅伝](https://vim-jp.org/ekiden/)の2023-11-27向けの記事です。
+:::
+<!-- textlint-enable -->
+
+## はじめに
+
+[前回](https://zenn.dev/articles/0001-until_1st_year_engineer_can_use_my_vim/edit)、エンジニアになってから1年間の成果のような記事を書きましたが、エンジニアになる切っ掛けが今回の記事になります。
+というのは建前で、これはVimConf 2023 Tinyの懇親会でLTの登壇することがあり、急いで書き上げた内容を駅伝用に仕立てたものです。
 
 ## 前職は警備員
 
