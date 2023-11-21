@@ -14,18 +14,16 @@ published_at: 2023-11-27
 
 VimConfというイベントについて振り替えろうと思います。
 
-## VimConf2023 Tiny当日
+## スピーカーセッション
 
-### スピーカーセッション
+### Bram Moolenaar the Creator of Vim - [mattnさん](https://github.com/mattn)
 
-#### Bram Moolenaar the Creator of Vim - [mattnさん](https://github.com/mattn)
+### Revolutionizing Vim/Neovim Plugin Development ~ An In-Depth Look into Denops - [Λlisueさん](https://github.com/lambdalisue)
 
-#### Revolutionizing Vim/Neovim Plugin Development ~ An In-Depth Look into Denops - [Λlisueさん](https://github.com/lambdalisue)
+### Looking back at vim meetup - [ゴリラさん](https://github.com/skanehira)
 
-#### Looking back at vim meetup - [ゴリラさん](https://github.com/skanehira)
+### Developing a Vim plugin with Ruby, or when in Ruby do as the Rubyists do - [大倉雅史さん](https://github.com/okuramasafumi)
 
-#### Developing a Vim plugin with Ruby, or when in Ruby do as the Rubyists do - [大倉雅史さん](https://github.com/okuramasafumi)
+### Modern techniques for implements insert mode plugins / Why use IME within text editor? - [kuuさん](https://github.com/kuuote)
 
-#### Modern techniques for implements insert mode plugins / Why use IME within text editor? - [kuuさん](https://github.com/kuuote)
-
-#### Boost your vimrc with some template techniques! - [aiya000さん](https://github.com/aiya000)
+### Boost your vimrc with some template techniques! - [aiya000さん](https://github.com/aiya000)
