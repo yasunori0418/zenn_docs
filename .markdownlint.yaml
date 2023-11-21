@@ -128,9 +128,10 @@ MD025:
   front_matter_title: "^\\s*title\\s*[:=]"
 
 # MD026/no-trailing-punctuation - Trailing punctuation in heading
-MD026:
-  # Punctuation characters
-  punctuation: ".,;:!。，；：！"
+# MD026:
+#   # Punctuation characters
+#   punctuation: ".,;:!。，；：！"
+MD026: false
 
 # MD027/no-multiple-space-blockquote - Multiple spaces after blockquote symbol
 MD027: true
