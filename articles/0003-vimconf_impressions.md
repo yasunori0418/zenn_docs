@@ -12,65 +12,20 @@ published_at: 2023-11-27
 
 ## はじめに
 
-VimConfの感想と言いつつ、その前日にもいろいろとやっているので、その辺も通しつつVimConfというイベントについて振り替えろうと思います。
-vim-jpで会話はしていても、実在するのかは実際に会ってみないと分からないものです。
-そんな素敵な方々との出会いの話です。
-
-## 前夜祭を兼ねたオフ会 通称：前野菜
-
-こちらはvim-jpの`# event-lunch`チャンネルにて、前日の2023-11-17に集れる人達とお昼に行きました。
-当日は悪天候の中、次の方々が集ってくださいました。
-
-- [kuuさん](https://github.com/kuuote)
-- [kyoh86さん](https://github.com/kyoh86)
-- [NI57721さん](https://github.com/NI57721)
-
-kuuさんに至っては、~~半ば強制~~だいぶ前から長期で東京の方へいらっしゃると伺っていたので、「是非とも」とお声を掛けさせていただきました。
-
-悪天候ゆえに、私達をあえて「嵐を呼ぶ男達」と称して集合することになりました（笑）。
-
-### kuuさんとの出会い
-
-秋葉原に到着し、kuuさんと合流しようとしました。
-ですが、お互いに顔を知らない状態のため、かなり迷いつつもkuuさんのvim-jp Tシャツと、私が事前に準備しておいた自分のネームプレートのお陰で無事合流できました。
-早い時間からkuuさんとの合流を果して、秋葉原のヨドバシカメラを散策してガジェットポーチやキーボード・トラックボールを見て回りました。
-普段からガジェットの話などで盛り上ることもあり、とても楽しい時間でした。
-
-### ランチ
-
-その後、kyoh86さん・NI57721さんと合流して、[欧風カリーM](https://tabelog.com/tokyo/A1310/A131001/13198950/)にて野菜カレーを食べました。
-<!-- textlint-disable -->
-ある意味では「前野菜」という通称に恥じないお昼になったと思っています。
-<!-- textlint-enable -->
-いつもの流れで、`# hobby-gourmet`に写真付きで情報提供を行ないつつ、リアルではないとできないような会話を楽しみました。
-kyoh86さんはお仕事の合間に来てくださり、本当にありがとうございました。
-
-### カラオケ店はvimをする場所ですよ？
-
-お昼の後には、NI57721さん・kuuさんとともにカラオケ点に入り、急遽もくもく会を開催しました。
-さすがと言いますか、Arch Linuxが動作するマシンを持った私とkuuさんという技術的特異点でも生まれそうな非現実的カラオケ部屋でのもくもく会は、あっという間に時間が過ぎてしまいました。
-ここに集っている全員Arch Linuxユーザーであり、vim-jpによって常識が曲った人しか居ないという現実…。
-恐しいことに、誰もこの状況を止める人は居ないのです。
-ですがこの状況、とても素敵なことではないでしょうか。
-これぞ、「エンジニアの楽園」といわれたvim-jpが現実に具象化しているのですから！
-NI57721さんに至っては、PCを持っていない状態にもかかわらず、同じ時間を共にしてくださりありがとうございます！
-
-<!-- textlint-disable -->
-次の画像は、世界ではじめて(要出展)カラオケ屋にてswaylockしたkuuさんの貴重なswaylockシーンです。
-[![Image from Gyazo](https://i.gyazo.com/08e7ded46d53c1aaa36242840079d5a4.jpg)](https://gyazo.com/08e7ded46d53c1aaa36242840079d5a4)
-<!-- textlint-enable -->
-お昼の野菜カレーが背景になっており、ライブ感が出たので、とてもよい写真が撮れたと思っています（笑）。
-
-### ちょっと早い夕食
-
-もくもく会が終った後、同じメンバーで夕食にしようという話になりました。
-幸いkuuさんは、オムライスが刺さるという話をヨドバシを散策している中で聞いたので、オムライスを食べることになりました。
-
-[神田たまごけん 秋葉原店](https://tabelog.com/tokyo/A1311/A131101/13178900/dtlmap/)
-
-ここでもVimとLinuxの談義で盛り上がりましたが、私は`# hobby-gourmet`に情報提供する写真を撮り忘れるという罪を犯してしまいました。
-大変申し分けないと思っています…。
-
-その後、明日のVimConfに備えて、別れを惜しみつつ早めの解散となりました。
+VimConfというイベントについて振り替えろうと思います。
 
 ## VimConf2023 Tiny当日
+
+### スピーカーセッション
+
+#### Bram Moolenaar the Creator of Vim - [mattnさん](https://github.com/mattn)
+
+#### Revolutionizing Vim/Neovim Plugin Development ~ An In-Depth Look into Denops - [Λlisueさん](https://github.com/lambdalisue)
+
+#### Looking back at vim meetup - [ゴリラさん](https://github.com/skanehira)
+
+#### Developing a Vim plugin with Ruby, or when in Ruby do as the Rubyists do - [大倉雅史さん](https://github.com/okuramasafumi)
+
+#### Modern techniques for implements insert mode plugins / Why use IME within text editor? - [kuuさん](https://github.com/kuuote)
+
+#### Boost your vimrc with some template techniques! - [aiya000さん](https://github.com/aiya000)
