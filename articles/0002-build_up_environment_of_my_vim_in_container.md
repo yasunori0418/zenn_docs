@@ -6,6 +6,6 @@ topics:
   - Vim
   - Neovim
   - docker
-published: false
-# published_at: 2023-12-31
+published: true
+published_at: 2023-12-03
 ---
