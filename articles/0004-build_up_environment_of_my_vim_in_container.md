@@ -25,6 +25,10 @@ published_at: 2023-12-03
 1. Vim or Neovim
     * `/\c\(neo\|n\)\?vim`
     * 基礎中の基礎ではありますが、大事なところです
+1. 使用しているVimのバージョン
+    * Stable
+    * nightly
+    * HEAD
 1. 設定のディストロを使っているか
     * SpaceVim, LunarVim and etc...
     * **1から設定を書いているオレオレディストロ**
