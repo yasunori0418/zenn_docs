@@ -59,7 +59,7 @@ published_at: 2023-12-03
 ---@param host string e.g. github.com
 ---@param repo string user_name/plugin_name
 local function init_plugin(host, repo)
-    -- M.dein_dir = vim.fs.joinpath(vim.env.XDG_CONFIG_HOME, "dein")
+    -- M.dein_dir = vim.fs.joinpath(vim.env.XDG_CACHE_HOME, "dein")
     local repo_dir = M.dein_dir .. "/repos/" .. host .. "/" .. repo
     local plugin_name = vim.fn.split(repo, "/")[2]
     if not vim.regex("/" .. plugin_name):match_str(vim.o.runtimepath) then
