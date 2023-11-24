@@ -5,6 +5,7 @@ type: "tech" # tech: 技術記事 / idea: アイデア
 topics:
   - Vim
   - Neovim
+  - lua
   - docker
 published: true
 published_at: 2023-12-03
@@ -45,7 +46,38 @@ published_at: 2023-12-03
 ここで一番大変かつ、環境構築の醍醐味といえるのは「1から設定を書いたオレオレディストロ」をお使いの方ですね。
 まぁ、逆に「1から設定を書く人」であれば、大変さを気にする必要は無いかもしれませんね（笑）
 
-## プラグインのインストールからセットアップまでを自動化しておく
+## プラグインマネージャのインストールからセットアップまでを自動化しておく
+
+プラグインのインストールはプラグインマネージャに任せていることでしょう。
+「そのプラグインマネージャのインストールは？」となるので、ここを自動化しておきましょう。
+極稀にプラグインマネージャをdotfilesにまとめてコミットされている方もいますが、GitHubなどでコード検索したときに混乱の元になるので避けておきたいですね。
+
+次のコードはNeovimでluaを使って、プラグインマネージャのインストールまでを自動化する関数です。
+
+```lua
+---初回起動時にプラグインのダウンロードとruntimepathに追加する
+---@param host string e.g. github.com
+---@param repo string user_name/plugin_name
+local function init_plugin(host, repo)
+    -- M.dein_dir = vim.fs.joinpath(vim.env.XDG_CONFIG_HOME, "dein")
+    local repo_dir = M.dein_dir .. "/repos/" .. host .. "/" .. repo
+    local plugin_name = vim.fn.split(repo, "/")[2]
+    if not vim.regex("/" .. plugin_name):match_str(vim.o.runtimepath) then
+        if vim.fn.isdirectory(repo_dir) ~= 1 then
+            os.execute("git clone https://" .. host .. "/" .. repo .. " " .. repo_dir)
+        end
+        vim.opt.runtimepath:append(repo_dir)
+    end
+end
+```
+
+私は`dein.vim`を使っているので、そのディレクトリ構造を想定した場所にプラグインをインストールするようにしています。
+私はこの関数を`init.vim`内で呼び出し、`dein.vim`の他に`vim-artemis`を初回起動時にインストールしています。
+つまり、この関数はミニプラグインマネージャになるのです。
+当然ながらインストールは初回のみで、2回目以降の起動時にはプラグインのディレクトリの存在を確認できるので、`runtimepath`にプラグインが追加されるだけになります。
+
+また、各プラグインマネージャによって想定するディレクトリ構造は違うので、プラグインマネージャの仕様を確認しておくのがよいでしょう。
+必要最低限のプラグインのインストール以降は、プラグインマネージャのインストール機能を活用して、残りのプラグイン達をインストールしてもらいましょう。
 
 ## 使いやすいディストロを選択する
 
