@@ -130,10 +130,10 @@ RUN pacman-key --init && \
     xdg-user-dirs-update && \
     ln -svf /usr/share/zoneinfo/${TZ} /etc/localtime && \
     echo "LANG=${COUNTRY}.${ENCODE}" > /etc/locale.conf
-
 ```
 
-## がんばる
+とりあえず参考として、ArchLinux~~への誘導~~の`Dockerfile`を書いてみましたが、皆さんがお使いのOSに合わせるのが最終的にはよいと思います。
+是非、「自分のVim」が動作する素敵なコンテナを作成してみてください。
 
 ## 私は"dotfiles in docker: 通称did"を作った
 
