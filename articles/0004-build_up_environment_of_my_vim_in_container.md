@@ -81,6 +81,58 @@ end
 
 ## 使いやすいディストロを選択する
 
+通常dockerコンテナ内の環境というのは、最小構成にするのが流儀ではあります。
+そのためにコンテナ用のイメージは、パッケージ数が極端に少ない場合があります。
+今回作るコンテナ内にて自分のVimで開発するのが目標のため、コンテナ内を最小構成にするという考えを捨てた方がよいと思います。
+
+ポピュラーなディストロを選択するなら、最初の候補に挙がるのはUbuntuでしょう。
+aptの情報も多いため、構築が簡単かと思います。
+ですが、Vimをコンテナ内でビルドしたい場合や、特定の言語での開発するときに結果的に余計な肥大化をしてしまったため、私は最終的に`ArchLinux:base-devel`を使っています。
+
+コアなVimmerは比較的ArchLinuxを使っている比率が高いので、「1から設定を書いている人」であれば抵抗は少ないと思われます。
+ArchLinuxでもAURというリポジトリからのインストールになることは少なく、base-develであればビルドツールがひととおり揃っているので、コンテナ内で最新のVimを使って開発するということが可能になります。
+
+Neovimをコンテナ内でビルドしたかったので私は次のようなパッケージリストを作成して、Dockerfile内でインストールするようにしています。
+
+```text
+cmake
+curl
+git
+ninja
+unzip
+vim
+wget
+xdg-user-dirs
+zsh
+```
+
+```Dockerfile
+FROM archlinux:base-devel
+
+# Load package list file with variable.
+ARG PKGLIST_FILE=./.docker/pkglist.txt
+
+# You can specify a list of non-aur packages in text format.
+# Adding package list.
+COPY ${PKGLIST_FILE} /etc/pacman.d/${PKGLIST_FILE}
+
+ARG COUNTRY=ja_JP
+ARG ENCODE=UTF-8
+ENV TZ=Asia/Tokyo
+ENV SHELL=/usr/bin/zsh
+WORKDIR /root
+
+# The pacman-key and pacman -Syu commands must be run for the initial time with archlinux images.
+RUN pacman-key --init && \
+    pacman-key --populate archlinux && \
+    pacman -Syu --noconfirm && \
+    pacman -S --needed --noconfirm - < /etc/pacman.d/${PKGLIST_FILE} && \
+    xdg-user-dirs-update && \
+    ln -svf /usr/share/zoneinfo/${TZ} /etc/localtime && \
+    echo "LANG=${COUNTRY}.${ENCODE}" > /etc/locale.conf
+
+```
+
 ## がんばる
 
 ## 私は"dotfiles in docker: 通称did"を作った
