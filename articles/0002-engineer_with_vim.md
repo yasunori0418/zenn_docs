@@ -22,7 +22,7 @@ published_at: 2023-11-27
 
 
 
-[前回]https://zenn.dev/vim_jp/articles/0001-until_1st_year_engineer_can_use_my_vim)エンジニアになってから1年間の成果のような記事を書きましたが、エンジニアになる切っ掛けが今回の記事になります。
+[前回](https://zenn.dev/vim_jp/articles/0001-until_1st_year_engineer_can_use_my_vim)エンジニアになってから1年間の成果のような記事を書きましたが、エンジニアになる切っ掛けが今回の記事になります。
 というのは建前で、これはVimConf 2023 Tinyの懇親会でLTの登壇することがあり、急いで書き上げた内容を駅伝用に仕立てたものです。
 
 ## 前職は警備員
