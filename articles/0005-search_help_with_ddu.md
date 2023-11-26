@@ -51,6 +51,29 @@ https://twitter.com/ShougoMatsu/status/1706991121979834792
 
 ## 必要なプラグインのインストール
 
+さて、前置きが長くなりましたが、今回必要なプラグインは次のとおりになります。
+
+* denops.vim
+  * https://github.com/vim-denops/denops.vim
+  * ddu.vimを動かすためにも必須のコアプラグインです
+* ddu.vim
+  * https://github.com/Shougo/ddu.vim
+  * これが無くてはdduは始まりません
+* ddu-ui-ff
+  * https://github.com/Shougo/ddu-ui-ff
+  * dduをfuzzyfinderとしてのUIを出すために必要です
+* ddu-filter-matcher_substring
+  * https://github.com/Shougo/ddu-filter-matcher_substring
+  * フィルターウィンドウで入力した文字列に応じて絞り込みを行なうために必要です
+* ddu-source-help
+  * https://github.com/matsui54/ddu-source-help
+  * 今回の主役です。これが無いとdduでヘルプの検索はできません
+
+インストールに使用するプラグインマネージャは、現在お使いの物をご利用ください。
+そして注意という訳ではありませんが、遅延起動などの設定は紹介しません。
+
+まずは今回の記事を通して、dduを使ってヘルプを検索できるようになりましょう。
+
 ## 設定
 
 ## さいごに
