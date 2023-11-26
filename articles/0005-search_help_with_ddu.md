@@ -7,6 +7,8 @@ topics:
   - Neovim
   - fuzzyfinder
 published: true
+publication_name: "vim_jp"
+published_at: 2023-12-08
 ---
 
 <!-- textlint-disable -->
