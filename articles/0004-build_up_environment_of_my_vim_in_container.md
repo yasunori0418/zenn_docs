@@ -132,16 +132,34 @@ RUN pacman-key --init && \
     echo "LANG=${COUNTRY}.${ENCODE}" > /etc/locale.conf
 ```
 
-とりあえず参考として、ArchLinux~~への誘導を込めて~~の`Dockerfile`を書いてみましたが、皆さんがお使いのOSに合わせるのが最終的にはよいと思います。
+とりあえず参考として、ArchLinux~~への誘導を込めて~~の私が使っている`Dockerfile`を紹介してみましたが、皆さんがお使いのOSに合わせるのが最終的にはよいと思います。
 是非、「自分のVim」が動作する素敵なコンテナを作成してみてください。
 
 ## 私は"dotfiles in docker: 通称did"を作った
 
 ここまで紹介したのは、あくまでもVimを動かすだけを目標にした内容です。
-私の場合、dotfilesを育てるのが大好きなので、dotfilesに詰めた開発のための機能を、すべて動作させる目的でコンテナを構築しています。
+私の場合、dotfilesを育てるのも大好きなので、dotfilesに詰めた開発のための機能をすべて動作させる目的でコンテナを構築しています。
 
 https://github.com/yasunori0418/did
 
-現状、だれかに使って貰える想定にはしていないので、使い方などはまとめていませんが、`Makefile`でよく実行する操作はまとめています。
+現状だれかに使って貰える想定にはしていませんが、`Makefile`でよく実行する操作はまとめています。
+
+```terminal
+$ make
+help                          subcommand list and description.
+start                         docker compose start
+stop                          docker compose stop
+ps                            docker compose ps
+zsh                           container start and attach with zsh
+init                          Initialize my favorite environment container.
+clean                         Remove all container information.
+reset                         clean & init
+```
+
+これをVimConf2023の前日のオフ会で紹介したところ、「だれでも穿けるパンツ」という称号を得ました。
+
+### What is `pants`?
+
+なぜこれがパンツと呼ばれるのか、それには理由があります。
 
 ## さいごに
