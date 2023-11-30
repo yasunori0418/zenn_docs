@@ -79,4 +79,56 @@ denoのインストール方法は、[公式ページ](https://docs.deno.com/run
 
 ## 設定
 
+次に紹介する設定を`init.vim`や`.vimrc`に追記してください。
+Neovimでluaを使って設定している人もいると思いますので、luaでの設定も書いておきます。
+
+<!-- textlint-disable -->
+
+:::details vim scriptの場合
+
+```vim script
+call ddu#custom#patch_global(#{
+\   ui: 'ff',
+\   uiParams: #{
+\     ff: #{
+\       split: 'floating',
+\       winHeight: '&lines - 8',
+\       winWidth: '&columns / 2 - 2',
+\       winRow: 1,
+\       winCol: 1,
+\       previewFloating: v:true,
+\       previewHeight: '&lines - 8',
+\       previewWidth: '&columns / 2 - 2',
+\       previewRow: 1,
+\       previewCol: '&columns / 2 + 1',
+\     },
+\   },
+\   sourceOptions: #{
+\     _: #{
+\       matchers: ['matcher_substring'],
+\     },
+\     help: #{
+\       defaultAction: 'open',
+\     },
+\   },
+\ })
+
+call ddu#custom#patch_local('help-ff', #{
+\   sync: v:true,
+\   sources: [{'name': 'help'}],
+\ })
+
+command! Help call ddu#start({'name': 'help-ff'})
+```
+
+:::
+<!-- textlint-enable -->
+
+<!-- textlint-disable -->
+
+:::details luaの場合
+
+:::
+<!-- textlint-enable -->
+
 ## さいごに
