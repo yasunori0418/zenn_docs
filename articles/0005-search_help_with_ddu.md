@@ -69,7 +69,10 @@ https://twitter.com/ShougoMatsu/status/1706991121979834792
   * https://github.com/matsui54/ddu-source-help
   * 今回の主役です。これが無いとdduでヘルプの検索はできません
 
-インストールに使用するプラグインマネージャは、現在お使いの物をご利用ください。
+`denops.vim`を動かすためにはdenoが必要です。
+denoのインストール方法は、[公式ページ](https://docs.deno.com/runtime/manual/getting_started/installation)を確認してください。
+
+またインストールに使用するプラグインマネージャは、現在お使いの物をご利用ください。
 そして注意という訳ではありませんが、遅延起動などの設定は紹介しません。
 
 まずは今回の記事を通して、dduを使ってヘルプを検索できるようになりましょう。
