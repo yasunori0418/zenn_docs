@@ -91,11 +91,15 @@ call ddu#custom#patch_global(#{
 \   ui: 'ff',
 \   uiParams: #{
 \     ff: #{
-\       split: 'floating',
-\       winHeight: '&lines - 8',
+\       startAutoAction: v:true,
+\       autoAction: #{
+\         delay: 0,
+\         name: 'preview',
+\       },
+\       split: 'vertical',
+\       splitDirection: 'topleft',
+\       startFilter: v:true,
 \       winWidth: '&columns / 2 - 2',
-\       winRow: 1,
-\       winCol: 1,
 \       previewFloating: v:true,
 \       previewHeight: '&lines - 8',
 \       previewWidth: '&columns / 2 - 2',
@@ -114,9 +118,27 @@ call ddu#custom#patch_global(#{
 \ })
 
 call ddu#custom#patch_local('help-ff', #{
-\   sync: v:true,
 \   sources: [{'name': 'help'}],
 \ })
+
+function! s:ddu_ff_keymaps() abort
+  nnoremap <buffer> <CR>
+  \ <Cmd>call ddu#ui#do_action('itemAction')<CR>
+  nnoremap <buffer> i
+  \ <Cmd>call ddu#ui#do_action('openFilterWindow')<CR>
+  nnoremap <buffer> q
+  \ <Cmd>call ddu#ui#do_action('quit')<CR>
+endfunction
+
+function! s:ddu_ff_filter_keymaps() abort
+  inoremap <buffer> <CR>
+  \ <Esc><Cmd>call ddu#ui#do_action('closeFilterWindow')<CR>
+  nnoremap <buffer> <CR>
+  \ <Cmd>call ddu#ui#do_action('closeFilterWindow')<CR>
+endfunction
+
+autocmd FileType ddu-ff call s:ddu_ff_keymaps()
+autocmd FileType ddu-ff-filter call s:ddu_ff_filter_keymaps()
 
 command! Help call ddu#start({'name': 'help-ff'})
 ```
