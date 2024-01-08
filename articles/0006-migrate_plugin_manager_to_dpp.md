@@ -5,6 +5,7 @@ type: "tech" # tech: 技術記事 / idea: アイデア
 topics: 
   - Vim
   - Neovim
+  - lua
   - denops
   - dpp
 published: false
@@ -34,6 +35,48 @@ published_at: 2024-01-15
 もくもく会はいいぞ！
 
 ## 構成
+
+<!-- textlint-disable -->
+
+::::details 過去の構成・設定について
+:::message
+まずは参考として、`dein.vim`を使用していたときの設定方針が[こちら](https://qiita.com/yasunori-kirin0418/items/4ac5fc07041977a8366f)にあります。
+この頃から現在では設定がluaベースになったり、hooks_fileを使用するようになった影響で構成が変わっています。
+過去設定との比較ということで、気になる方がいらっしゃいましたらご覧ください。
+:::
+::::
+
+<!-- textlint-enable -->
+
+まずはディレクトリ構成は次のようにしています。
+
+```diff :directories
+ ~/.config/nvim
+ ├── after
+ ├── denops
++├── dpp # dpp.vimの設定をまとめたディレクトリ
++├── hooks # hooks_fileをまとめたディレクトリ
+ ├── lua
++├── rc # inlineVimrcsに追加される全体設定をまとめたディレクトリ :h dpp-option-inlineVimrcs
++├── snippets # 個人で定義したスニペット用のディレクトリ(今回は関係ない…)
++└── toml # dpp-ext-tomlで読み込むtoml用のディレクトリ
+```
+
+通常の`runtimepath`や`denops.vim`を使用した場合を除いて、自動で探索されないディレクトリを追加しています。
+対象のディレクトリにはマークを付けていますが、ディレクトリの名前のとおりの意味合いになっております。
+このとおりに各種設定ファイルを配置し、`init.lua`や`dpp.vim`内での設定で各種ディレクトリを探索してすべての設定はまとめられるようになっています。
+
+設定の基本構成としては、次の流れで読み込まれていきます。
+
+1. `init.lua`
+1. `lua/user/rc.lua`
+1. `dpp/config.ts`
+    1. `rc/*.lua`
+    1. `toml/*.toml`
+    1. `hooks/*` ※各種プラグイン毎に読み込み
+
+今回紹介する設定では、主に`lua/user/rc.lua`と`dpp/config.ts`を中心に紹介したいと思います。
+tomlによる設定に関しては、`dein.vim`と構造は変わらないため説明を省きます。
 
 ## 設定
 
