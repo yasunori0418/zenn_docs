@@ -20,6 +20,11 @@ published_at: 2024-01-15
 
 ## 始めに
 
+年末年始の休みでNeovimプラグインマネージャを[`dein.vim`][dein]から[`dpp.vim`][dpp]に移行しました。
+`dein.vim`自体も難しいプラグインマネージャではありますが、`dpp.vim`は更に上を行く難易度です。
+また使用者によって構成や設定方法が違う可能性があり、応用力が求められるプラグインマネージャです。
+今回の移行作業に際して、私の構成や設定方針を記事として残しておきます。
+
 ## もくもく会はいいぞ
 
 ## 構成
@@ -31,3 +36,10 @@ published_at: 2024-01-15
 ### TypeScript側の設定
 
 ## 注意点
+
+## まとめ
+
+<!-- URLリンク集 -->
+
+[dein]: https://github.com/Shougo/dein.vim
+[dpp]: https://github.com/Shougo/dpp.vim
