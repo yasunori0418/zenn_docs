@@ -1,5 +1,5 @@
 ---
-title: "プラグインマネージャをdpp.vimへ移行と設定方針やメモ"
+title: "プラグインマネージャをdpp.vimへ移行と設定方針"
 emoji: "🚀"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: 
