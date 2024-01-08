@@ -26,6 +26,8 @@ published_at: 2024-01-15
 また使用者によって構成や設定方法は違う可能性があり、応用力が求められるプラグインマネージャです。
 今回の移行作業に際して、私の構成や設定方針を記事として残しておきます。
 
+基本的な設定や使い方に関しては、[作者による記事][dpp-article]をご覧ください。
+
 ## もくもく会はいいぞ
 
 年末年始の2023-12-28に[vim-jp][vim-jp]で開催された **『新宿もくもく会』** では、この`dpp.vim`の移行作業というテーマで参加しました。
@@ -93,3 +95,4 @@ tomlによる設定に関しては、`dein.vim`と構造は変わらないため
 [dein]: https://github.com/Shougo/dein.vim
 [dpp]: https://github.com/Shougo/dpp.vim
 [vim-jp]: https://vim-jp.org
+[dpp-article]: https://zenn.dev/shougo/articles/dpp-vim-beta
