@@ -1,0 +1,17 @@
+{
+  "extends": [
+    "config:base"
+  ],
+  "timezone": "Asia/Tokyo",
+  "dependencyDashboard": false,
+  "automerge": true,
+  "branchConcurrentLimit": 0,
+  "packageRules": [
+    {
+      "matchFileNames": [
+        "package.json"
+      ],
+      "groupName": "all package.json dependencies."
+    }
+  ]
+}
