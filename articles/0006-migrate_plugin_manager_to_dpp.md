@@ -5,8 +5,8 @@ type: "tech" # tech: 技術記事 / idea: アイデア
 topics: 
   - Vim
   - Neovim
-  - denops.vim
-  - dpp.vim
+  - denops
+  - dpp
 published: false
 publication_name: "vim_jp"
 published_at: 2024-01-15
