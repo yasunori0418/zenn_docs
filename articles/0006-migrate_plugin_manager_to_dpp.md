@@ -12,6 +12,12 @@ publication_name: "vim_jp"
 published_at: 2024-01-15
 ---
 
+<!-- textlint-disable -->
+:::message
+この記事は[Vim駅伝](https://vim-jp.org/ekiden/)の2024-01-15向けの記事です。
+:::
+<!-- textlint-enable -->
+
 ## 始めに
 
 ## もくもく会はいいぞ
