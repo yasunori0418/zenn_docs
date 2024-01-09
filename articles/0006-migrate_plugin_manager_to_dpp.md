@@ -50,7 +50,27 @@ published_at: 2024-01-15
 
 <!-- textlint-enable -->
 
-まずはディレクトリ構成は次のようにしています。
+### dpp.vimの拡張について
+
+現在使用している`dpp.vim`の拡張は次のとおりです。
+
+* [dpp-ext-lazy](https://github.com/Shougo/dpp-ext-lazy)
+  * プラグインの遅延起動処理を追加する拡張
+* [dpp-ext-toml](https://github.com/Shougo/dpp-ext-toml)
+  * toml読み込みを使用できるようになる拡張
+* [dpp-ext-installer](https://github.com/Shougo/dpp-ext-installer)
+  * プラグインのインストール処理が可能になる拡張
+* [dpp-protocol-git](https://github.com/Shougo/dpp-protocol-git)
+  * Gitのcloneによるプラグインインストールを可能とする拡張
+
+この拡張の構成を`dein.vim`と比較した場合、ローカルプラグインの読み込み機能を使用しない構成になります。
+ローカルプラグインの読み込み機能は`dein.vim`の頃から使ってなかった機能だったので、このように使う機能を選択できるのが`dpp.vim`の良さですね。
+
+まだ試せてはいないですが、この他にも拡張が作成されているようなので、設定のしがいがありそうですね。
+
+### ディレクトリ構造
+
+ディレクトリ構成は次のようにしています。
 
 ```diff : directories
  ~/.config/nvim
@@ -66,7 +86,8 @@ published_at: 2024-01-15
 
 通常の`runtimepath`や`denops.vim`を使用した場合を除いて、自動で探索されないディレクトリを追加しています。
 対象のディレクトリにはマークを付けていますが、ディレクトリの名前のとおりの意味合いになっております。
-このとおりに各種設定ファイルを配置し、`init.lua`や`dpp.vim`内での設定で各種ディレクトリを探索してすべての設定はまとめられるようになっています。
+このとおりに各種設定ファイルを配置し、`init.lua`や`dpp.vim`内での設定で各種ディレクトリを探索して、
+すべての設定はdppのキャッシュとしてまとめられるようになっています。
 
 設定の基本構成としては、次の流れで読み込まれていきます。
 
