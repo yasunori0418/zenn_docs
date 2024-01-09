@@ -52,7 +52,7 @@ published_at: 2024-01-15
 
 まずはディレクトリ構成は次のようにしています。
 
-```diff :directories
+```diff : directories
  ~/.config/nvim
  ├── after
  ├── denops
