@@ -103,6 +103,13 @@ tomlによる設定に関しては、`dein.vim`と構造は変わらないため
 
 ## 設定
 
+<!-- textlint-disable -->
+:::message alert
+冒頭にも書きましたが、基本的な設定や使い方に関しては、[作者による記事][dpp-article]をご覧ください。
+ここでは私の設定の簡単な解説までに留めます。
+:::
+<!-- textlint-enable -->
+
 ### lua側の設定
 
 ### TypeScript側の設定
