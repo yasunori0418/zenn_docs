@@ -207,7 +207,6 @@ end
 :::details dpp設定関連
 
 ```lua : lua/user/rc.lua
-
 local function gather_check_files()
     local glob_patterns = {
         "**/*.lua",
