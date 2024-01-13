@@ -193,7 +193,7 @@ https://github.com/yasunori0418/dotfiles/blob/c76d42d19eedd1d2efd158ff2a3f62894a
 
 https://github.blog/jp/2021-01-13-get-up-to-speed-with-partial-clone-and-shallow-clone/
 
-## まとめ
+## 移行してみての感想
 
 <!-- URLリンク集 -->
 
