@@ -117,21 +117,51 @@ https://github.com/yasunori0418/dotfiles/blob/c76d42d19eedd1d2efd158ff2a3f62894a
 `init.lua`から`lua/user/rc.lua`の`setup`関数を呼び出すことで、
 各種ディレクトリのマークと必須プラグインのインストールまでをセットアップするようにしています。
 
-`setup`関数は、Neovimで用意されている`NVIM_APPNAME`への対応と、
-各種設定を配置したディレクトリをマークするために、グローバル変数や環境変数にセットしています。
+#### `setup`
 
-一番大事なのは`plugin_add`関数です。
+最初はNeovimで用意されている`NVIM_APPNAME`への対応と、各種設定を配置したディレクトリをマークするために、グローバル変数や環境変数にセットしています。
+
+#### `plugin_add`
+
+一番大事な関数です。
 初回起動から`dpp.vim`が使えるようになるためには、自前の極小プラグインマネージャを構築する必要があります。
-
 私の場合色々とリッチにしていることもあって、他のGitホスティングサービスからのプラグイン追加をできるようにしていますが、
 現状ではGitHubからのインストールだけで十分かと思います。
 
 プラグインは`runtimepath`に追加されることで、プラグインとして使用可能になるため、必ず`runtimepath`への追加を行なっています。
 `prepend`を使用することで`runtimepath`の先頭に`dpp.vim`として必須のプラグインが追加されるようにしています。
 気持ちの問題かもしれませんが、先頭に追加するのは「そっちの方が処理は速くなるのかな…」という迷信や思いを込めています。
+ここに関しては、もうすこしよい書き方があるかもしれないと模索している最中です。
 
-lua側の設定最後は、`dpp_setup`です。
-ここでは大量にautocmdを定義したり、自動セットアップのために涙ぐましい努力を重ねています。
+#### `dpp_setup`
+
+lua側の最後設定です。
+ここでは大量に`dpp.vim`用のautocmdを定義したり、自動セットアップのために涙ぐましい努力を重ねています。
+自動セットアップとして初回起動時には、すべてのプラグインがインストールされてNeovimが安定して終了するように制御しています。
+
+`dpp.vim`を使えるようにする部分に関しては[作者の記事][dpp-article]を参照してもらうとして、ここではより便利な書き方をするためのtipsを紹介します。
+
+`make_state`を実行するタイミングは`denops.vim`がプラグインとして使える状態になっていないといけません。
+そのため、作者の記事では`DenopsReady`というイベントにフックする形で、`make_state`を実行しています。
+しかし、autocmdで書かなくても`denops.vim`で用意されている`denops#server#wait_async`という関数が便利です。
+
+```vimhelp
+                                              *denops#server#wait_async()*
+denops#server#wait_async({callback})
+    Wait asynchronously until a |DenopsReady| autocmd is fired and invoke
+    a {callback}. It invokes the {callback} immediately when the autocmd
+    is already fired. If this function is called multiple times, callbacks
+    registered are called in order of registration.
+
+    DenopsReadyになるまで非同期で待機します。
+    autocmdが起動され、{callback} が呼び出されます。
+    autocmdがすでに起動されたら、すぐに {callback} を呼び出します。
+    この関数が複数回呼び出された場合、登録されたコールバックが登録順に呼び出されます。
+```
+
+また、TypeScript側の設定でも後述しますが、設定の編集後の保存にフックする形で`check_files`という処理を実行しています。
+これが実行されると、`dpp.vim`で作成されるキャッシュの更新を自動で行なってくれます。
+そのためNeovimの設定ファイルだけを探索しておいて、対象のファイルを変更したときだけ`check_files`を実行するようにしています。
 
 ### TypeScript側の設定
 
