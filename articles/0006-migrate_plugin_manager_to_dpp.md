@@ -8,7 +8,7 @@ topics:
   - lua
   - denops
   - dpp
-published: false
+published: true
 publication_name: "vim_jp"
 published_at: 2024-01-15
 ---
