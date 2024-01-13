@@ -166,6 +166,33 @@ denops#server#wait_async({callback})
 
 ### TypeScript側の設定
 
+https://github.com/yasunori0418/dotfiles/blob/c76d42d19eedd1d2efd158ff2a3f62894a95a3e5/config/nvim/dpp/config.ts
+
+`make_state`によって呼び出すTypeScriptの設定です。
+
+基本方針として主要な処理はこの`config.ts`ファイルで実行していますが、ファイルを集めたり、型を定義するのは`helper.ts`にまとめています。
+この基本方針は、`ddc.vim`と`ddu.vim`でも同じような方針で設定を分割しています。
+
+#### ファイル探索系
+
+各種設定ファイルを配置したディレクトリ内を探索する関数として、`helper.ts`には次の関数をそれぞれ定義しています。
+
+* `gatherVimrcs`
+* `gatherTomls`
+* `gatherCheckFiles`
+
+これらの関数では、`dpp.vim`の設定として返して欲しい型にしてデータを返すように処理をまとめて、`config.ts`では探索場所と追加の条件があれば、適宜定義しています。
+
+これらの関数を使用するための探索場所をlua側の設定でグローバル変数や環境変数という形で定義しておくことで、`denops_std`を使えば呼び出せるということです。
+
+#### パーシャルクローン
+
+`dpp-protocol-git`によって、プラグインインストール時には`git clone`を使用しますが、このときに大きなプラグインを落すときに時間が掛ってしまいます。
+これを短縮する方法として、「パーシャルクローン」という方式を使ってプラグインをcloneしてくれるオプションを有効にしています。
+パーシャルクローンについては次の記事が参考になります。
+
+https://github.blog/jp/2021-01-13-get-up-to-speed-with-partial-clone-and-shallow-clone/
+
 ## 注意点
 
 ## まとめ
