@@ -112,7 +112,7 @@ tomlによる設定に関しては、`dein.vim`と構造は変わらないため
 
 ### lua側の設定
 
-https://github.com/yasunori0418/dotfiles/blob/0f7aaa0b0eb5b41dcd96e89371e4e92085770971/config/nvim/lua/user/rc.lua
+https://github.com/yasunori0418/dotfiles/blob/d24f946e808782290093091616fb77b81e8372fb/config/nvim/lua/user/rc.lua
 
 `init.lua`から`lua/user/rc.lua`の`setup`関数を呼び出すことで、
 各種ディレクトリのマークと必須プラグインのインストールまでをセットアップするようにしています。
@@ -164,7 +164,7 @@ denops#server#wait_async({callback})
 
 ### TypeScript側の設定
 
-https://github.com/yasunori0418/dotfiles/blob/0f7aaa0b0eb5b41dcd96e89371e4e92085770971/config/nvim/dpp/config.ts
+https://github.com/yasunori0418/dotfiles/blob/d24f946e808782290093091616fb77b81e8372fb/config/nvim/dpp/config.ts
 
 `make_state`によって呼び出すTypeScriptの設定です。
 
