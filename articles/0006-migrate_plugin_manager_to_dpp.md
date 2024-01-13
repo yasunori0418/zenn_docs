@@ -120,6 +120,7 @@ https://github.com/yasunori0418/dotfiles/blob/c76d42d19eedd1d2efd158ff2a3f62894a
 #### `setup`
 
 最初はNeovimで用意されている`NVIM_APPNAME`への対応と、各種設定を配置したディレクトリをマークするために、グローバル変数や環境変数にセットしています。
+後半の方は、`dpp.vim`を使用するための設定郡で、別の関数に切り出しています。
 
 #### `plugin_add`
 
