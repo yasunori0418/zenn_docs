@@ -223,6 +223,7 @@ export async function gatherCheckFiles(
 ```
 
 `denops_std`でvimに組み込まれた関数を使用する場合は`fn`から使用できます。
+また、`globpath`という関数に関しては、`:h globpath()`でご確認ください。
 
 #### パーシャルクローン
 
