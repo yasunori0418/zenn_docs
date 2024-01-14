@@ -182,6 +182,47 @@ https://github.com/yasunori0418/dotfiles/blob/d24f946e808782290093091616fb77b81e
 これらの関数では、`dpp.vim`の設定として返して欲しい型にしてデータを返すように処理をまとめて、`config.ts`では探索場所と追加の条件があれば、適宜定義しています。
 
 これらの関数を使用するための探索場所をlua側の設定でグローバル変数や環境変数という形で定義しておくことで、`denops_std`を使えば呼び出せるということです。
+たとえば`gatherVimrcs`の場合、`~/.config/nvim/rc`というディレクトリを探索しやすくするために、`vim.g.rc_dir`というグローバル変数にパスを格納しています。
+これを`denops_std`で取得する場合は次のようにすると呼びだせます。
+
+```typescript
+const inlineVimrcs: string[] = gatherVimrcs(
+  await vars.g.get(denops, "rc_dir"),
+  vimrcSkipRules,
+);
+```
+
+この`vars`というものを使えば、vim側で設定した変数へのアクセスが可能になります。
+
+私の場合、`dpp.vim`の依存としてまとめている`deps.ts`からインポートするようにしています。
+
+https://deno.land/x/dpp_vim/deps.ts
+
+その後、対象のディレクトリの中のファイルリストを作成するのは、deno本体のAPIの`Deno.readDirSync`というメソッドを使用しています。
+
+https://deno.land/api?s=Deno.readDirSync
+
+この探索方式はtomlファイルを探索するためにも使用していますが、`gatherCheckFiles`だけは違う方法で探索しています。
+
+`checkFiles`では設定ファイルのリストを渡す必要がありますが、設定ファイルはさまざまなディレクトリに配置されている関係で、`Deno.readDirSync`を使うのは少し大変です。
+そのため設定の基礎ディレクトリとして`base_dir`というグローバル変数を定義しているので、そこから再帰的にファイルを探索する方法として、`globpath`というvimの関数を`denops_std`から呼び出しています。
+
+```typescript
+export async function gatherCheckFiles(
+  denops: Denops,
+  path: string,
+  globs: string[],
+): Promise<string[]> {
+  const checkFiles: string[] = [];
+  for (const glob of globs) {
+    checkFiles.push(await fn.globpath(denops, path, glob, true, true));
+  }
+
+  return checkFiles.flat();
+}
+```
+
+`denops_std`でvimに組み込まれた関数を使用する場合は`fn`から使用できます。
 
 #### パーシャルクローン
 
