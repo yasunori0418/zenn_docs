@@ -204,6 +204,26 @@ https://deno.land/api?s=Deno.readDirSync
 
 この探索方式はtomlファイルを探索するためにも使用していますが、`gatherCheckFiles`だけは違う方法で探索しています。
 
+`checkFiles`では設定ファイルのリストを渡す必要がありますが、設定ファイルはさまざまなディレクトリに配置されている関係で、`Deno.readDirSync`を使うのは少し大変です。
+そのため設定の基礎ディレクトリとして`base_dir`というグローバル変数を定義しているので、そこから再帰的にファイルを探索する方法として、`globpath`というvimの関数を`denops_std`から呼び出しています。
+
+```typescript
+export async function gatherCheckFiles(
+  denops: Denops,
+  path: string,
+  globs: string[],
+): Promise<string[]> {
+  const checkFiles: string[] = [];
+  for (const glob of globs) {
+    checkFiles.push(await fn.globpath(denops, path, glob, true, true));
+  }
+
+  return checkFiles.flat();
+}
+```
+
+`denops_std`でvimに組み込まれた関数を使用する場合は`fn`から使用できます。
+
 #### パーシャルクローン
 
 `dpp-protocol-git`によって、プラグインインストール時には`git clone`を使用しますが、このときに大きなプラグインを落すときに時間が掛ってしまいます。
