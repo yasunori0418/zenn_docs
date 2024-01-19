@@ -142,4 +142,29 @@ Apacheの設定では、ディレクティブのブロックという形でタ�
 このときもビジュアルモード同様に、`cit`などタイプするキーを声に出しながら教えていきます。
 これだけであれば文字列の削除後にインサートモードへ入るだけですが、オペレータを使うメリットとしてドットリピートできることを教えましょう。
 
+このときに合わせて使うテキストオブジェクトは`gn`にしてみましょう。
+
+```help : help gn
+                                            *gn* *v_gn*
+gn          最後に使われた検索パターンを前方検索し (`n` のように)、
+            マッチしたものを選択してビジュアルモードを開始する。
+            カーソルがマッチの上にあるときは、それをビジュアル選択する。
+            オペレータ待ちのときは、マッチに対してオペレータを実行する。
+            例: "dgn" は次のマッチを削除する。
+            すでにビジュアルモードなら、次のマッチの末尾まで選択範囲を拡大する。
+            'wrapscan' が適用される。
+            Note: `n` とは異なり、検索方向は前の検索コマンドには依存しない。
+
+```
+
+適当な英文を生成してみました。
+この英文に含まれているGitHubという単語を`cgn`でGitLabに変更する操作をキャプチャしてみました。
+
+```text
+GitHub is a widely-used platform for version control and collaborative software development.
+Developers utilize Git, a distributed version control system, to manage their projects efficiently.
+The integration of Git with GitHub facilitates seamless collaboration among team members,
+allowing them to contribute code, track changes, and manage project workflows effectively.
+```
+
 ## まとめ
