@@ -78,38 +78,6 @@ Vimのテキスト編集を彩る一押し機能です。
 
 適当にAIでサンプルのHTMLを生成させたので、操作例をキャプチャしておきました。
 
-```html
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <title>表付きのWebサイト</title>
-</head>
-<body>
-  <h1>表付きのWebサイト</h1>
-  <p>Webサイトの本文</p>
-  <table>
-    <thead>
-      <tr>
-        <th>タイトル</th>
-        <th>説明</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>タイトル1</td>
-        <td>説明1</td>
-      </tr>
-      <tr>
-        <td>タイトル2</td>
-        <td>説明2</td>
-      </tr>
-    </tbody>
-  </table>
-</body>
-</html>
-```
-
 ![キーバインドサンプル](/images/0007/textobject_sample.gif)
 
 上記のHTMLに対して、ビジュアルモードで適当に選択操作をしてみました。
