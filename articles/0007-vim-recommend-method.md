@@ -167,4 +167,6 @@ The integration of Git with GitHub facilitates seamless collaboration among team
 allowing them to contribute code, track changes, and manage project workflows effectively.
 ```
 
+![キーバインドサンプル](/images/0007/cgn_sample.gif)
+
 ## まとめ
