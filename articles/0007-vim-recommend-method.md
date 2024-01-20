@@ -161,10 +161,16 @@ gn          最後に使われた検索パターンを前方検索し (`n` の�
 この英文に含まれているGitHubという単語を`cgn`でGitLabに変更する操作をキャプチャしてみました。
 
 ```text
-GitHub is a widely-used platform for version control and collaborative software development.
-Developers utilize Git, a distributed version control system, to manage their projects efficiently.
-The integration of Git with GitHub facilitates seamless collaboration among team members,
-allowing them to contribute code, track changes, and manage project workflows effectively.
+SVN
+SVN
+SVN
+SVN
+SVN
+SVN
+SVN
+SVN
+SVN
+SVN
 ```
 
 ![キーバインドサンプル](/images/0007/cgn_sample.gif)
