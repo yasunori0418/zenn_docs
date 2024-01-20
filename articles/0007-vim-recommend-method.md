@@ -159,19 +159,6 @@ gn          最後に使われた検索パターンを前方検索し (`n` の�
 
 SVNという単語を`cgn`でGitに変更する操作をキャプチャしてみました。
 
-```text
-SVN
-SVN
-SVN
-SVN
-SVN
-SVN
-SVN
-SVN
-SVN
-SVN
-```
-
 ![キーバインドサンプル](/images/0007/cgn_sample.gif)
 
 ## まとめ
