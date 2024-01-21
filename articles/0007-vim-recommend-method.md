@@ -11,6 +11,12 @@ publication_name: "vim_jp"
 published_at: 2024-01-22
 ---
 
+<!-- textlint-disable -->
+:::message
+この記事は[Vim駅伝](https://vim-jp.org/ekiden/)の2024-01-22向けの記事です。
+:::
+<!-- textlint-enable -->
+
 ## 始めに
 
 https://x.com/YKirin0418/status/1745413612393619781
