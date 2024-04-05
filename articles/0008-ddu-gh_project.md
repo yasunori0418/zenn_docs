@@ -68,6 +68,40 @@ sourceによって取得したitemに対する操作はkindになりますが、
 
 #### タスクの作成・編集
 
+dduのkindでは、選択したitemに対してのシングルアクションまでしかできません。
+このプラグインでのユースケースでは、選択したタスクの内容を編集したいのですが、編集後の処理というステップはdduのkindでは対応範囲外です。
+これを解決するために今回はdenops.vimの機能も活かしつつ、作成・編集用のtomlを生成してscratch-bufferで編集するという方法を取りました。
+
+タスク選択からGitHub Projectへの反映までを順番に書くと次のようになります。
+
+1. タスクの選択
+    - ddu kindによって作成・編集の処理を呼び出し
+1. タスクの作成・編集
+    - scratch-bufferに作成・編集用のtomlをscratch-bufferに展開
+1. 編集・作成内容をGitHub Projectへ反映
+    - 編集内容を元にghコマンドによってクエリを実行
+
+scratch-bufferは下書き用の一時bufferとして使用できます。
+
+```text
+:h scratch-buffer
+            *scratch-buffer*
+scratch     いつでも破棄されうるテキストを保持する。ウィンドウを閉じても保たれ
+            明示的に削除されなければならない。
+            設定は: >
+            :setlocal buftype=nofile
+            :setlocal bufhidden=hide
+            :setlocal noswapfile
+<           このバッファを識別するためにはバッファ名が使われる。
+            ただし、そのためにはそのバッファに意味のある名前がついていなければならない。
+```
+
+dduによって選択したタスクを編集するためのtomlをkindで作成し、専用のscratch-bufferにインプットします。
+ここで作成されるtomlには、後続のGitHub Projectへの反映処理のために必要なパラメータを含みます。
+
+最後に編集が完了しscratch-bufferを閉じるときに、自動でscratch-bufferの内容をdenops.vim側でキャッチして、
+ghコマンドによって編集内容を反映するコマンドを連続で実行していきます。
+
 ### 苦労したこと
 
 ### こだわったところ
