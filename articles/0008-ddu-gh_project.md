@@ -113,6 +113,17 @@ ghコマンドによって編集内容を反映するコマンドを連続で実
 
 ## GitHub-Cliへのコントリビュートについて
 
+https://github.com/cli/cli/releases/tag/v2.46.0
+
+![cli/cli/releases/tag/v2.46.0](https://storage.googleapis.com/zenn-user-upload/1aee57df2421-20240406.png)
+
+今回作成したプラグインに併せて、GitHub-Cliへコントリビュートしました。
+Goへのチャレンジの切っ掛けとして、とても良かったと思っています。
+
+何よりも、色々な人が使うアプリケーションに貢献できたのと、「自慢話のネタとしてしばらく使えるなw」などと思っております。
+
+そもそも、今回コントリビュートするまで必要だったものとは、`DraftIssueID`が`gh project item-list`に含まれていなかったからです。
+
 ### `DraftIssueID`がない
 
 ### PR作成からマージまで
