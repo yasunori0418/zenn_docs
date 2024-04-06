@@ -126,4 +126,51 @@ Goへのチャレンジの切っ掛けとして、とても良かったと思っ
 
 ### `DraftIssueID`がない
 
+プラグインでタスクのタイトルや本文を編集したいと編集機能を作っていると、そもそもコマンドから編集できない現象に遭遇しました。
+
+![DraftIssueID](https://storage.googleapis.com/zenn-user-upload/b9051d0082d7-20240407.png)
+
+```text
+ID must be the ID of the draft issue content which is prefixed with `DI_`
+```
+
+上では実際に、ghコマンドから取得できる`PVTI_`というプレフィックスのIDを指定してエラーになっているところです。
+「もしやプレフィックスが`PVTI_`だからダメなのか？」と思い、`DI_`始まりに変えてあげたらよいのかといえば、そう甘くはなかったのです。
+
+どうやっても編集できないため、issueを見に言ってみました。
+
+https://github.com/cli/cli/issues/8005
+
+まず、`DraftIssueID`とは何者かというと、GitHub Projectで作成されたタスクは`DraftIssue`という分類になります。
+この`DraftIssue`をghコマンドで操作するとき、`gh project item-edit --id <item-id>`で指定する`item-id`には、`DraftIssueID`が必要だったのです。
+
+issueでは修正方針などは決まっていて、`--format json`にしているときに`content`へ`id`という形で`DraftIssueID`が含まれるということでした。
+ここまで議論が進んでいても、実装されず2023年の9月にissueはストップしていました。
+
+> I would like the draft issue id to be included in the content that can be obtained with `gh project item-list --format json`,
+> but what is the response to this issue?
+> Hasn't PR etc. been created yet for this response?
+> I'd like to help if possible, but I'm not familiar with Go, so it's a bit difficult.
+> However, I'm currently looking at the source code to see if I can fix it somehow!
+>
+> `gh project item-list --format json`で取得できる内容に、ドラフト課題IDを含めて欲しいのですが、
+> このissueへの対応はどうなっているのでしょうか？
+> この対応についてのPRなどはまだ作成されていないのでしょうか？
+> できれば協力したいのですが、Goに詳しくないのでちょっと難しいです。
+> ただ、なんとか修正できないかと思い、現在ソースコードを見ているところです！
+
+<!-- textlint-disable -->
+とりあえず、質問しつつも`DraftIssueID`が無ければ始まらないため修正していきました。
+確実に言えるのは、怒り駆動で修正を始めています。
+まさかのGoを触る最初のプロジェクトがGitHub-CliへのPR作成になったのです。
+<!-- textlint-enable -->
+
 ### PR作成からマージまで
+
+先に書いたように修正方針は決まっていたので、生れたての小鹿の如くGoの基礎を速攻でインプットしつつ、
+対象のソースを探しだして修正していきました。
+
+https://github.com/cli/cli/pull/8754
+
+メンテナーのwilliammartinさんからレビューしてもらいつつ、無事PRがマージされました。
+そして、このマージ後`v2.46.0`のリリースタグにて、"New Contributors"として名前を刻むことができたのでした！
