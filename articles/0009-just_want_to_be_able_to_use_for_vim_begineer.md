@@ -49,6 +49,23 @@ published_at: 2024-04-17
 
 ## Step.1 ちゃんとVimをインストールする
 
+「Vimを使えるようになりたい」
+そう言いながら、ちゃんとVimをインストールしていなかったり、サーバーに入っている`vi`互換バージョンを使用している可能性があります。
+Vimを使いたいなら最新のVimを使いましょう。
+
+最新であれば、セキュリティパッチが適応されていたり、便利な機能が盛り込まれていたりします。
+業務で使用するVimが、最新のVimでなければ、頑張って申請してみましょう。
+セキュリティ的に安全という言葉は、十分に交渉材料として役立つでしょう。
+現在のVim開発体制について、VimConf2023 TinyでKen Takata氏より発表があります。
+
+https://github.com/k-takata/zenn-contents/blob/master/articles/files/vimconf2023_takata_lt.pdf
+
+### Linux
+
+### Windows
+
+### Mac
+
 ## Step.2 日常のちょっとした編集にVimを取り入れる
 
 ## Step.3 `.vimrc`を作成してみる
