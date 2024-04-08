@@ -62,9 +62,48 @@ https://github.com/k-takata/zenn-contents/blob/master/articles/files/vimconf2023
 
 ### Linux
 
-### Windows
+Vimを使うなら最高の環境です。
+インストール方法は書くまでも無いと思っていますが、一応。
+
+```bash
+# Ubuntu or Debian
+sudo apt install vim
+
+# RHEL
+sudo dnf install vim
+
+# Archlinux...これ、必要？
+sudo pacman -S vim
+
+# Gentoo...さすがに必要ないでしょ。
+sudo emerge vim
+```
+
+*Linuxをお使いであれば、行く行くはビルドしてHEADを使うという選択もいいと思います。*
 
 ### Mac
+
+Macには`MacVim`というカスタム版がインストールされています。
+正しく、Vimをインストールしましょう。
+Macなら大抵はHomebrewを使っていると思われるので、コマンドだけ貼っておきますね。
+
+```bash
+brew install vim
+```
+
+https://vim-jp.org/
+
+困ったらvim-jpで配布しているインストーラーでインストールしてください。
+
+### Windows
+
+私はWindowsを主戦場としていないので、コマンドからのインストール方法は詳しくありません。
+
+https://vim-jp.org/
+
+困ったらvim-jpで配布しているインストーラーでインストールしてください。
+
+~~ここで「Windows消せ」などという無粋なことは言いませんよ…？~~
 
 ## Step.2 日常のちょっとした編集にVimを取り入れる
 
