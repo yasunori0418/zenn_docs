@@ -71,37 +71,28 @@ sudo apt install vim
 
 # RHEL
 sudo dnf install vim
-
-# Archlinux...これ、必要？
-sudo pacman -S vim
-
-# Gentoo...さすがに必要ないでしょ。
-sudo emerge vim
 ```
 
-*Linuxをお使いであれば、行く行くはビルドしてHEADを使うという選択もいいと思います。*
+Linuxをお使いであれば、行く行くはビルドしてHEADを使うという選択もいいと思います。
+しかしながら、初心者がVimをビルドしている姿をイメージできなかったので、ここでは紹介を省きます。
 
 ### Mac
 
-Macには`MacVim`というカスタム版がインストールされています。
+MacにはVimがプリインストールされていますが、バージョンが古いです。
 正しく、Vimをインストールしましょう。
-Macなら大抵はHomebrewを使っていると思われるので、コマンドだけ貼っておきますね。
+Macなら大抵はHomebrewを使っていると思われるので、コマンドだけ貼っておきます。
 
 ```bash
 brew install vim
 ```
 
-https://vim-jp.org/
-
-困ったらvim-jpで配布しているインストーラーでインストールしてください。
-
 ### Windows
 
 私はWindowsを主戦場としていないので、コマンドからのインストール方法は詳しくありません。
 
-https://vim-jp.org/
+https://github.com/vim/vim-win32-installer/releases
 
-困ったらvim-jpで配布しているインストーラーでインストールしてください。
+ここで、Windows版のインストーラーが配布されているので、ポチポチしてインストールしてください。
 
 ~~ここで「Windows消せ」などという無粋なことは言いませんよ…？~~
 
