@@ -60,6 +60,8 @@ Vimを使いたいなら最新のVimを使いましょう。
 
 https://github.com/k-takata/zenn-contents/blob/master/articles/files/vimconf2023_takata_lt.pdf
 
+上記のリンク先のスライドを見て貰えれば、最新のVimがセキュリティ的に安全であるということの証明になります。
+
 ### Linux
 
 Vimを使うなら最高の環境です。
