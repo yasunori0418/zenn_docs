@@ -182,4 +182,50 @@ vimtutorの中で紹介されると思いますが、慣れるまではVisualMod
 
 ## Step.3 `.vimrc`を作成してみる
 
+おそらく、ここに到達するまでにvimtutorを実施しているものとします。
+さて、ここまででVimの操作をしながら、いろいろな不満を覚えているはずです。
+次のような不満点が生れているはずです。
+
+- 行番号が無い
+- カーソル移動するために、NormalModeに戻るのが面倒になる
+- 保存するのが面倒
+- 言語毎にインデントの設定をしたい
+
+起動したときにある程度の設定が適用されるための`.vimrc`を作成しましょう。
+`.vimrc`を作成する場合、次の場所に作成、もしくは配置してください。
+
+- Linux or Mac
+  - `~/.vimrc`
+  - `~/.vim/vimrc`
+- Windows
+  - `%USERPROFILE%\_vimrc`
+  - `%USERPROFILE%\_vimfiles\vimrc`
+
+一応、私が使用している最小設定の`.vimrc`があるため、こちらも共有しておきます。
+
+https://github.com/yasunori0418/dotfiles/blob/0fb4280199581af9a0b19cdea9f8c61a54f89c03/home/.vimrc
+
+*…これが最小？
+いや、あなたも`.vimrc`を作成していけば、これが最小設定であることに納得できるはずです。*
+
+### vim scriptとvim help
+
+`.vimrc`にはvim scriptを記述する必要があります。
+vim scriptの解説は内蔵されたhelpがあるので、そちらを参照してください。
+vim内でヘルプを見る場合は、`:h <help-tag>`でヘルプが開けます。
+
+```vim
+:h options
+:h option-summary
+```
+
+おっと、最初の時点では、helpが英語で読むのが大変と思いますよね。
+そこで[vim-jp](https://vim-jp.org)では、helpの日本語化をコミュニティで対応しています。
+
+https://vim-jp.org/vimdoc-ja/
+
+こちらの日本語helpは、プラグインとしても配布されています。
+
+`.vimrc`を作成したあなたは、次のステップとして日本語ヘルプを導入してみましょう！
+
 ## 最後に
