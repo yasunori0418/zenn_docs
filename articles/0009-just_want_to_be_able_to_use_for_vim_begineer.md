@@ -106,11 +106,17 @@ https://iterm2.com/
 
 ### Windows
 
-私はWindowsを主戦場としていないので、コマンドからのインストール方法は詳しくありません。
+Windows11では、デフォルトでwingetというコマンドがあるためCUIからインストールできます。
+
+```cmd
+winget install Vim.Vim
+```
+
+それ以前のWindowsをお使いでしたら、次のリンク先でインストーラーをダウンロードできます。
 
 https://github.com/vim/vim-win32-installer/releases
 
-ここで、Windows版のインストーラーが配布されているので、ポチポチしてインストールしてください。
+ダウンロード後は、ポチポチしてインストールしてください。
 
 ~~*ここで「Windows消せ」などという無粋なことは言いませんよ…？*~~
 
