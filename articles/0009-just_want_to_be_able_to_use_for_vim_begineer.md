@@ -247,10 +247,10 @@ https://github.com/yasunori0418/dotfiles/blob/0fb4280199581af9a0b19cdea9f8c61a54
 *…これが最小？
 いや、あなたも`.vimrc`を作成していけば、これが最小設定であることに納得できるはずです。*
 
-### vim scriptとvim help
+### Vim scriptとvim help
 
-`.vimrc`にはvim scriptを記述する必要があります。
-vim scriptの解説は内蔵されたhelpがあるので、そちらを参照してください。
+`.vimrc`にはVim scriptを記述する必要があります。
+Vim scriptの解説は内蔵されたhelpがあるので、そちらを参照してください。
 vim内でヘルプを見る場合は、`:h <help-tag>`でヘルプが開けます。
 
 設定項目についてのhelpは次のコマンドで開けます。
