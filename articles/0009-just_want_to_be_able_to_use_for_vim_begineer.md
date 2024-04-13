@@ -208,11 +208,13 @@ vimtutorの中で紹介されると思いますが、慣れるまではVisualMod
 
 ```sh
 # Linux or Mac
-vimtutor
+vimtutor ja
 
 # Windows
-vimtutor -console
+vimtutor -console ja
 ```
+
+`ja`を引数に含めておくことで、日本語版のvimtutorが起動します。
 
 Windowsの場合は、`-console`を付けないと`gvim`というGUI版が起動するようです。
 GUI版は今回の記事のコンセプトから外れるため、`-console`オプションを付けて黒い画面でVimしましょう。
