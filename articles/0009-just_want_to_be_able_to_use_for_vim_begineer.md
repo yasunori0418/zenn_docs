@@ -30,7 +30,8 @@ https://scrapbox.io/vim-jp/Vimmer%E3%81%AE%E3%83%AC%E3%83%99%E3%83%AB%EF%BC%91%E
 
 1. Vimの流儀に沿った操作方法を覚える
     - InsertModeでカーソル移動しない
-    - 絶対にNormalModeでカーソル移動するなら、hjklで移動する
+    - カーソル移動はNormalModeで行う
+    - カーソルキーは使わず、代わりにh/j/k/lを使う
 1. `.vimrc`を作成する
     - 最低限の`.vimrc`を作成して、ちょっと快適に操作できるようになる
 1. プラグインのインストールを次のステップとして視野に入れる
