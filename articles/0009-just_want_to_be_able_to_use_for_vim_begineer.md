@@ -232,4 +232,12 @@ https://github.com/vim-jp/vimdoc-ja
 
 `.vimrc`を作成したあなたは、次のステップとして日本語ヘルプを導入してみましょう！
 
+#### 蛇足？
+
+help検索をお手軽にする方法として、手前味噌ですがddu.vimを使用するヘルプ検索を紹介したことがあります。
+
+https://zenn.dev/vim_jp/articles/0005-search_help_with_ddu
+
+やる気があるようなら、こちらも試してみるとよいでしょう…（沼）
+
 ## 最後に
