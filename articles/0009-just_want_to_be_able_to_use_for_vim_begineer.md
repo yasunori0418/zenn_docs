@@ -85,6 +85,8 @@ sudo apt install vim
 sudo dnf install vim
 ```
 
+黒い画面ことターミナルエミュレータは、各ディストロにてデフォルトでインストールされている物を使用すれば大丈夫だと思います。
+
 ### Mac
 
 MacにはVimがプリインストールされていますが、バージョンが古いです。
@@ -95,6 +97,12 @@ Macなら大抵はHomebrewを使っていると思われるので、コマンド
 brew install vim
 ```
 
+Macを使っている方のターミナルエミュレータは、よくiTerm2という物を利用されている気がしています。
+
+https://iterm2.com/
+
+こちらを使用すれば問題無いと思っています。
+
 ### Windows
 
 私はWindowsを主戦場としていないので、コマンドからのインストール方法は詳しくありません。
@@ -103,7 +111,14 @@ https://github.com/vim/vim-win32-installer/releases
 
 ここで、Windows版のインストーラーが配布されているので、ポチポチしてインストールしてください。
 
-~~ここで「Windows消せ」などという無粋なことは言いませんよ…？~~
+~~*ここで「Windows消せ」などという無粋なことは言いませんよ…？*~~
+
+また黒い画面として、`cmd.exe`を使用するのは、個人的には推奨していません。
+使用するなら`Windows Terminal`がよいでしょう。
+
+https://apps.microsoft.com/detail/9n0dx20hk701?hl=ja-jp&gl=JP
+
+[*どうやら最新ならデフォルトでインストールされているらしい？*](https://www.itmedia.co.jp/pcuser/articles/2201/04/news023.html)
 
 ## Step.2 日常のちょっとした編集にVimを取り入れる
 
@@ -179,6 +194,23 @@ vimtutorの中で紹介されると思いますが、慣れるまではVisualMod
 
 そして、どこの入門でもいわれる鉄則みたいなルールですが、困ったらESCで**NormalMode**に戻りましょう。
 **NormalModeこそがVimのあるべき姿** であり、 **戻るべきMode** なのです。
+
+## Step.2.5 vimtutor
+
+この辺で一度は`vimtutor`コマンドを使っておきましょう。
+
+```sh
+# Linux or Mac
+vimtutor
+
+# Windows
+vimtutor -console
+```
+
+Windowsの場合は、`-console`を付けないと`gvim`というGUI版が起動するようです。
+GUI版は今回の記事のコンセプトから外れるため、`-console`オプションを付けて黒い画面でVimしましょう。
+
+~~*ここで「Windows消せ」などという(ry*~~
 
 ## Step.3 `.vimrc`を作成してみる
 
