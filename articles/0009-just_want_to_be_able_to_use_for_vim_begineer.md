@@ -214,6 +214,8 @@ https://github.com/yasunori0418/dotfiles/blob/0fb4280199581af9a0b19cdea9f8c61a54
 vim scriptの解説は内蔵されたhelpがあるので、そちらを参照してください。
 vim内でヘルプを見る場合は、`:h <help-tag>`でヘルプが開けます。
 
+設定項目についてのhelpは次のコマンドで開けます。
+
 ```vim
 :h options
 :h option-summary
@@ -225,6 +227,8 @@ vim内でヘルプを見る場合は、`:h <help-tag>`でヘルプが開けま�
 https://vim-jp.org/vimdoc-ja/
 
 こちらの日本語helpは、プラグインとしても配布されています。
+
+https://github.com/vim-jp/vimdoc-ja
 
 `.vimrc`を作成したあなたは、次のステップとして日本語ヘルプを導入してみましょう！
 
