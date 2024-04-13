@@ -30,7 +30,8 @@ https://scrapbox.io/vim-jp/Vimmer%E3%81%AE%E3%83%AC%E3%83%99%E3%83%AB%EF%BC%91%E
 
 1. Vimの流儀に沿った操作方法を覚える
     - InsertModeでカーソル移動しない
-    - 絶対にNormalModeでカーソル移動するなら、hjklで移動する
+    - カーソル移動はNormalModeで行う
+    - カーソルキーは使わず、代わりにh/j/k/lを使う
 1. `.vimrc`を作成する
     - 最低限の`.vimrc`を作成して、ちょっと快適に操作できるようになる
 1. プラグインのインストールを次のステップとして視野に入れる
@@ -105,11 +106,17 @@ https://iterm2.com/
 
 ### Windows
 
-私はWindowsを主戦場としていないので、コマンドからのインストール方法は詳しくありません。
+Windows11では、デフォルトでwingetというコマンドがあるためCUIからインストールできます。
+
+```cmd
+winget install Vim.Vim
+```
+
+それ以前のWindowsをお使いでしたら、次のリンク先でインストーラーをダウンロードできます。
 
 https://github.com/vim/vim-win32-installer/releases
 
-ここで、Windows版のインストーラーが配布されているので、ポチポチしてインストールしてください。
+ダウンロード後は、ポチポチしてインストールしてください。
 
 ~~*ここで「Windows消せ」などという無粋なことは言いませんよ…？*~~
 
@@ -145,7 +152,7 @@ vimtutorの実施はお好みでお任せします。
 1. 疲れたら**いつものエディタに戻ってもよい**が、次の日に1回はVimを使う
 
 特に上記の項番の`4`と`5`を口ずさみながら操作すると ***Very Good!*** です。
-とにかく伝えたいのは、繰替えしVimの操作を反復することで、Vimの基礎的なキーマップが咄嗟に出てくるようになると、Vimの良さが分かるはずです。
+とにかく伝えたいのは、繰り返しVimの操作を反復することで、Vimの基礎的なキーマップが咄嗟に出てくるようになると、Vimの良さが分かるはずです。
 
 ### キーマップ
 
@@ -201,11 +208,13 @@ vimtutorの中で紹介されると思いますが、慣れるまではVisualMod
 
 ```sh
 # Linux or Mac
-vimtutor
+vimtutor ja
 
 # Windows
-vimtutor -console
+vimtutor -console ja
 ```
+
+`ja`を引数に含めておくことで、日本語版のvimtutorが起動します。
 
 Windowsの場合は、`-console`を付けないと`gvim`というGUI版が起動するようです。
 GUI版は今回の記事のコンセプトから外れるため、`-console`オプションを付けて黒い画面でVimしましょう。
@@ -240,10 +249,10 @@ https://github.com/yasunori0418/dotfiles/blob/0fb4280199581af9a0b19cdea9f8c61a54
 *…これが最小？
 いや、あなたも`.vimrc`を作成していけば、これが最小設定であることに納得できるはずです。*
 
-### vim scriptとvim help
+### Vim scriptとvim help
 
-`.vimrc`にはvim scriptを記述する必要があります。
-vim scriptの解説は内蔵されたhelpがあるので、そちらを参照してください。
+`.vimrc`にはVim scriptを記述する必要があります。
+Vim scriptの解説は内蔵されたhelpがあるので、そちらを参照してください。
 vim内でヘルプを見る場合は、`:h <help-tag>`でヘルプが開けます。
 
 設定項目についてのhelpは次のコマンドで開けます。
