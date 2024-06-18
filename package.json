@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "preview": "npx zenn preview > /dev/null 2>&1 &"
+    "preview": "npx zenn preview --port 8000 --host 127.0.0.1 > /dev/null 2>&1 &"
   },
   "keywords": [],
   "author": "",
