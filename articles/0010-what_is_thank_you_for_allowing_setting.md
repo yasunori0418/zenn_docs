@@ -5,6 +5,7 @@ type: "idea" # tech: 技術記事 / idea: アイデア
 topics:
   - Vim
   - Neovim
+  - ポエム
 published: true
 publication_name: vim_jp
 published_at: 2024-06-24
@@ -29,7 +30,14 @@ published_at: 2024-06-24
 って言えるように…なっていたら良いなぁって思っています。
 <!-- textlint-enable -->
 
-## Vimを設定するとは？
+### Vimを設定するとは？
+
+前提として「Vimを設定する」ということは、GitHub等にdotfilesやdotvimといった設定をまとめたリポジトリを作成して、個人開発している状態を言います。
+ここではVimを一番の例としていますが、EmacsはもちろんVSCodeでも可能です。
+つまり設定できれば何でもよいのですが、お恥かしながらVim/Neovimしか設定をまとめられていないため、ここではVimを例とさせてください。
+
+それでは「設定させていただきありがとうございます」って何…？となるかもしれません。
+…これについては後に語りましょう。
 
 ## メリット
 
