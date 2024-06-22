@@ -12,3 +12,9 @@ published: true
 publication_name: vim_jp
 published_at: 2024-06-28
 ---
+
+<!-- textlint-disable -->
+:::message
+この記事は[Vim駅伝](https://vim-jp.org/ekiden/)の2024-06-28向けの記事です。
+:::
+<!-- textlint-enable -->
