@@ -49,6 +49,12 @@ https://zenn.dev/kamecha/articles/18d244603c85fd
 
 一番参考になるのは[**リファレンス実装**](https://github.com/Shougo/shougo-s-github)なので、リポジトリの中から設定例を探すのが一番です。
 
+## 前提
+
+[参考文献](https://zenn.dev/kamecha/articles/18d244603c85fd)で紹介されている`ddu#custom#action`という関数が紹介されていますが、TypeScriptで設定する場合、`uiOptions`/`sourceOptions`/`kindOptions`で対象のUI/Source/Kindの中に`actions`というプロパティ内にアクションを定義していきます。
+
+今回はKindOptionsで設定していきますが、sourceOptionsも実態としては同じで、何のsourceに対してアクションを作成したいか、という違いしかないです。
+
 ## 設定
 
 ## まとめ
