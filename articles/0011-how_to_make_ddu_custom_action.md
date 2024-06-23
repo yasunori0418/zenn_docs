@@ -18,3 +18,9 @@ published_at: 2024-06-28
 この記事は[Vim駅伝](https://vim-jp.org/ekiden/)の2024-06-28向けの記事です。
 :::
 <!-- textlint-enable -->
+
+## 始めに
+
+## 設定
+
+## まとめ
