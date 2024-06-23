@@ -75,4 +75,14 @@ https://github.com/yasunori0418/dotfiles/blob/6436e379/config/nvim/hooks/ddu/con
 `uiCd`に関してはhelpでもサンプルコードが提供されていて、内容をそのままTypeScriptで書き直しただけになります。
 ですが、一番のメリットはTypeScriptによる型定義の恩恵が得られることです。
 
+### ActionArguments
+
+dduで選択したアイテムに対してアクションを実行すると、アクションには`ActionArguments`という型でデータが渡されます。
+アクションは渡された`ActionArguments`のデータを元に、設定された処理を実行します。
+型定義の詳細は、次のリンク先を参照してください。
+
+https://deno.land/x/ddu_vim/types.ts?s=ActionArguments
+
+この処理の流れは`vim script`や`lua`で設定していても同じことですが、TypeScriptで設定を書くことで、型定義による補完サポートの恩恵が得られます。
+
 ## まとめ
