@@ -55,6 +55,24 @@ https://zenn.dev/kamecha/articles/18d244603c85fd
 
 今回はKindOptionsで設定していきますが、sourceOptionsも実態としては同じで、何のsourceに対してアクションを作成したいか、という違いしかないです。
 
+あとは`deno lsp`がエディタの中で使える状態になっていることが必須条件です。
+これが使えないとメリットを享受できません。
+
 ## 設定
+
+下記はサンプルとして、私が設定しているカスタムアクションになります。
+
+https://github.com/yasunori0418/dotfiles/blob/6436e379/config/nvim/hooks/ddu/config.ts#L232-L260
+
+このサンプルの中では、次のアクションを定義しています。
+
+- uiCd
+  - 選択した最初のアイテムからファイルパスを取得して、実行したいUIのアクションにパラメータとして渡す
+  - [`:h ddu-source-path_history-examples`](https://github.com/Shougo/ddu-source-path_history/blob/1ad4de5/doc/ddu-source-path_history.txt#L33-L54)
+- cdOpen
+  - 選択した最初のアイテムからファイルパスを取得して、そのパスに`chdir`して`:edit .`を実行
+
+`uiCd`に関してはhelpでもサンプルコードが提供されていて、内容をそのままTypeScriptで書き直しただけになります。
+ですが、一番のメリットはTypeScriptによる型定義の恩恵が得られることです。
 
 ## まとめ
