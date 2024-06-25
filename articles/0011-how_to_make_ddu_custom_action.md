@@ -124,3 +124,8 @@ https://github.com/kyoh86/ddu-source-git_branch/pull/1
 ddu.vimはTypeScriptで設定させていただくことができるのはもちろん、気が付けばPR作成への道標を示しているのです。
 
 ## まとめ
+
+とりあえず、今回の記事ではddu.vimの設定をTypeScriptで記述すれば、型情報があって便利なんだなぁ～というのが伝わればOKです！
+
+また、ddu.vimの他にもddc.vimもTypeScriptで設定が可能です。
+インターフェイスは用意されていますが、まだTypeScriptで設定されている人の数が少ないため、この記事がキッカケになれば嬉しいです。
