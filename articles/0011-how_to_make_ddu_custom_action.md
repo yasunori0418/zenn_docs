@@ -103,7 +103,7 @@ const action = args.items[0].action as FileActionData;
 
 このようにして型情報を用いながらカスタムアクションを作成できるため、デバッグログで内容を確認しながらの開発よりも、型定義に沿って開発を進めることができるため、非常に楽しく設定できます。
 
-***設定させていただきありがとうございます！***
+[***設定させていただきありがとうございます！***](https://zenn.dev/vim_jp/articles/0010-what_is_thank_you_for_allowing_setting)
 
 ## PRへ
 
