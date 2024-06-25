@@ -53,7 +53,7 @@ https://zenn.dev/kamecha/articles/18d244603c85fd
 
 [参考文献](https://zenn.dev/kamecha/articles/18d244603c85fd)で紹介されている`ddu#custom#action`という関数が紹介されていますが、TypeScriptで設定する場合、`uiOptions`/`sourceOptions`/`kindOptions`で対象のUI/Source/Kindの中に`actions`というプロパティ内にアクションを定義していきます。
 
-今回はKindOptionsで設定していきますが、sourceOptionsも実態としては同じで、何のsourceに対してアクションを作成したいか、という違いしかないです。
+今回は`kindOptions`で設定していきますが、`sourceOptions`も実態としては同じで、何のsourceに対してアクションを作成したいか、という違いしかないです。
 
 あとは`deno lsp`がエディタの中で使える状態になっていることが必須条件です。
 これが使えないとメリットを享受できません。
@@ -75,7 +75,7 @@ https://github.com/yasunori0418/dotfiles/blob/6436e379/config/nvim/hooks/ddu/con
 `uiCd`に関してはhelpでもサンプルコードが提供されていて、内容をそのままTypeScriptで書き直しただけになります。
 ですが、一番のメリットはTypeScriptによる型定義の恩恵が得られることです。
 
-### ActionArguments
+### `ActionArguments`
 
 dduで選択したアイテムに対してアクションを実行すると、アクションには`ActionArguments`という型でデータが渡されます。
 アクションは渡された`ActionArguments`のデータを元に、設定された処理を実行します。
@@ -83,6 +83,26 @@ dduで選択したアイテムに対してアクションを実行すると、�
 
 https://deno.land/x/ddu_vim/types.ts?s=ActionArguments
 
-この処理の流れは`vim script`や`lua`で設定していても同じことですが、TypeScriptで設定を書くことで、型定義による補完サポートの恩恵が得られます。
+この処理の流れはvim scriptやluaで設定していても同じことですが、TypeScriptで設定を書くことで、型定義による補完サポートの恩恵が得られます。
+
+### `DduItem[]`と`ActionData`
+
+前述した`ActionArguments`で一番使うものは`DduItem`内の`ActionData`です。
+`ActionData`は各dduプラグインでも使用されているインターフェイスで、`ActionData`を元にKindによる処理が行なわれます。
+そのため共通のデータの型ではなく、プラグイン毎に`ActionData`は定義されています。
+ですが、`ActionArguments`から`ActionData`を取得しても各dduプラグインの型情報が無いため、次の用に型アサーションして使用します。
+
+```typescript
+import { ActionData as FileActionData } from "https://deno.land/x/ddu_kind_file@v0.7.1/file.ts";
+// 中略
+const action = args.items[0].action as FileActionData;
+```
+
+私の場合他のdduプラグインにもカスタムアクションを作成しているため、どのKindから取得してきた`ActionData`の型情報なのか分かるように、インポート時にエイリアスを設定しています。
+上記の例では、[`ddu-kind-file`](https://github.com/Shougo/ddu-kind-file)の`ActionData`であることが分かるように`FileActionData`というエイリアスを設定しています。
+
+このようにして型情報を用いながらカスタムアクションを作成できるため、デバッグログで内容を確認しながらの開発よりも、型定義に沿って開発を進めることができるため、非常に楽しく設定できます。
+
+***設定させていただきありがとうございます！***
 
 ## まとめ
