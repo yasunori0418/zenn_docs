@@ -10,7 +10,7 @@
   "packageRules": [
     {
       "matchFileNames": [
-        "package.json"
+        "deno.jsonc"
       ],
       "groupName": "all package.json dependencies."
     }
