@@ -1,0 +1,9 @@
+{
+  "imports": {
+    "zenn-cli": "npm:zenn-cli@^0.1.154"
+  },
+  "tasks": {
+    "list": "npx zenn list:articles | sort",
+    "preview": "npx zenn preview --port 8000 --host 127.0.0.1 > /dev/null 2>&1 &"
+  }
+}
