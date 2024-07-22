@@ -2,7 +2,8 @@
   "version": "3",
   "packages": {
     "specifiers": {
-      "npm:zenn-cli@0.1.154": "npm:zenn-cli@0.1.154"
+      "npm:zenn-cli@0.1.154": "npm:zenn-cli@0.1.154",
+      "npm:zenn-cli@latest": "npm:zenn-cli@0.1.154"
     },
     "npm": {
       "zenn-cli@0.1.154": {
@@ -214,15 +215,5 @@
     "https://deno.land/x/yargs_parser@yargs-parser-v21.1.1-deno/build/lib/yargs-parser.js": "4864e5d4520e72489cd492e70401387ea3db2a2b710831c513dd08700e6d8e22",
     "https://deno.land/x/yargs_parser@yargs-parser-v21.1.1-deno/deno.ts": "ac684e36df011e65b86b476a0ca78d7170793bef7324cd17f830eedb2740235d",
     "https://deno.land/x/yargs_parser@yargs-parser-v21.1.1-deno/lib/yargs-parser-types.ts": "1ba00f7a85c734f2aaf5cc6dc78f56a2ec9f2811fb50c4f0d33e55d9a504d68a"
-  },
-  "workspace": {
-    "dependencies": [
-      "npm:zenn-cli@^0.1.154"
-    ],
-    "packageJson": {
-      "dependencies": [
-        "npm:zenn-cli@^0.1.154"
-      ]
-    }
   }
 }
