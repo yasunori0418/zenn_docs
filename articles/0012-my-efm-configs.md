@@ -41,8 +41,33 @@ https://github.com/tsuyoshicho/vim-efm-langserver-settings
 
 こちらのプラグインは内部にefm-langserver用の`config.yaml`を持っているため、こちらの方が簡単に設定できる可能性があります。
 
-## luaでクラスを作ってみる
+## 現在のコード
 
-### lua_ls annotations
+まずは執筆時点のコードを見てみましょう。
 
-## 反省点
+最初は実際にefm-langserverの起動設定を記述はこちら。
+
+https://github.com/yasunori0418/dotfiles/blob/8b67843/config/nvim/lua/user/lsp/servers/efm.lua
+
+このファイルではefm-langserverで使用したいツールの定義と、efm-langserver本体の起動設定になります。
+自分のdotfilesの中ではありますが、このファイルでは定義と設定だけに整理して、
+ツール設定のデータ処理は`user.plugins.efm_configs`という場所に処理をまとめています。
+
+https://github.com/yasunori0418/dotfiles/blob/8b67843/config/nvim/lua/user/plugins/efm_configs.lua
+
+そして、これが問題のツール設定のデータ処理系になります。
+一般的なNeovimのプラグインと似たような感じに`efm_configs.setup({...})`という書き方で、
+使用ツールの設定リストや、対応するファイルタイプ一覧を出力する機能を持っています。
+当時はluaのクラスの書き方に慣れず、四苦八苦しながらなんとか書いた処理になります。
+
+_「当時は…」とか言っていますが、いまだにluaでクラスを定義するのには慣れていません…。_
+
+### 処理系の概略
+
+処理の概略として定義したデータ型を元に、使用したいツール名や種類等を列挙して、
+`setup`でツール設定を`efm-configs-nvim`から取得してLSPの起動設定に入れやすい形へ加工します。
+[とある歴史的関係](https://zenn.dev/vim_jp/articles/0001-until_1st_year_engineer_can_use_my_vim)で無効にしていますが、ツールを`mason.nvim`経由でインストールすることも可能になっています。
+
+その後、インスタンスとなった`efm_configs`から加工されたデータをプロパティとして取得する物になります。
+
+## 後悔と反省点
