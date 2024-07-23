@@ -60,7 +60,7 @@ https://github.com/yasunori0418/dotfiles/blob/8b67843/config/nvim/lua/user/plugi
 使用ツールの設定リストや、対応するファイルタイプ一覧を出力する機能を持っています。
 当時はluaのクラスの書き方に慣れず、四苦八苦しながらなんとか書いた処理になります。
 
-_「当時は…」とか言っていますが、いまだにluaでクラスを定義するのには慣れていません…。_
+*「当時は…」とか言っていますが、いまだにluaでクラスを定義するのには慣れていません…。*
 
 ### 処理系の概略
 
@@ -71,3 +71,87 @@ _「当時は…」とか言っていますが、いまだにluaでクラスを�
 その後、インスタンスとなった`efm_configs`から加工されたデータをプロパティとして取得する物になります。
 
 ## 後悔と反省点
+
+この段階では特に問題という問題が無いように思いますが、こちらをご覧ください。
+
+https://github.com/yasunori0418/dotfiles/blob/8b67843/config/nvim/lua/user/lsp/servers/efm.lua#L21-L28
+
+https://github.com/yasunori0418/dotfiles/blob/8b67843/config/nvim/lua/user/lsp/servers/efm.lua#L40-L58
+
+***おわかりいただけただろうか…***
+
+類似するファイルタイプで、使用したいツールが同じパターンなのです！
+
+これは純粋に考慮漏れから来る設計ミスな訳ですが、見方を変えたら冗長的に設定を宣言できている…？
+とは言っても一度プラグインから取得してきたテーブルを再度呼びだすのはパフォーマンス的には問題だと思ていたり…。
+
+**そもそも処理を分けた理由は、同じような記述を連続して列挙したくなかったのと、プラグインとして切り出せる可能性を作っておきたかったからです。**
+
+使用ツールに対して、複数のファイルタイプを設定できるようなデータ構造にしないといけない。
+部署移動した関係でMacを遊びだして改善に手を出せず幾星霜…。
+
+で、反省点を書くという記事を書いているって訳。
+
+## 改善案
+
+luaのannotationには慣れていないけど、TypeScriptなら雰囲気で書けるので、多分こんな感じの型を`setup`が受け入れるようにしようと考えている物はあります。
+
+```typescript
+interface ToolConfig {
+  toolKind: "formatters" | "linters";
+  name: string;
+  filetypes: string[];
+  autoInstall?: boolean;
+}
+
+interface EfmConfigSetup {
+  autoInstalls: boolean;
+  tools: ToolConfig[];
+}
+```
+
+一番の肝は`ToolConfig`ですね。
+🤖「最初から使いたいツール情報をまとめた配列にしておけば良かったのに…。」
+
+ただ、レコードにしておくことでファイルタイプが、キーの一覧を取得したらLSPの設定に入れやすいというメリットがあります。
+使用している[`efm-configs-nvim`のREADME](https://github.com/creativenull/efmls-configs-nvim#setup)でも同じような構成で設定が紹介されています。
+
+```lua
+-- Register linters and formatters per language
+local eslint = require('efmls-configs.linters.eslint')
+local prettier = require('efmls-configs.formatters.prettier')
+local stylua = require('efmls-configs.formatters.stylua')
+local languages = {
+  typescript = { eslint, prettier },
+  lua = { stylua },
+}
+
+-- Or use the defaults provided by this plugin
+-- check doc/SUPPORTED_LIST.md for the supported languages
+--
+-- local languages = require('efmls-configs.defaults').languages()
+
+local efmls_config = {
+  filetypes = vim.tbl_keys(languages),
+  settings = {
+    rootMarkers = { '.git/' },
+    languages = languages,
+  },
+  init_options = {
+    documentFormatting = true,
+    documentRangeFormatting = true,
+  },
+}
+
+require('lspconfig').efm.setup(vim.tbl_extend('force', efmls_config, {
+  -- Pass your custom lsp config below like on_attach and capabilities
+  --
+  -- on_attach = on_attach,
+  -- capabilities = capabilities,
+}))
+```
+
+## 最後に
+
+時間を作って改善案のデータ型で処理する形に変更したいと考えています。
+幸いにも記事を書いて、反省点や改善案を出せたので、次のVim活のネタが捻り出せたのは良かったです！
