@@ -1,5 +1,5 @@
 ---
-title: "惰性でArchLinuxを使っていたが、必要に狩られてNixOSを使い出した"
+title: "惰性でArchLinuxを使っていたが、必要に駆られてNixOSを使い出した"
 emoji: "🫖"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics:
