@@ -48,6 +48,57 @@ https://zenn.dev/asa1984/books/nix-introduction
 あと、Nixを私に勧めてくれた[たけてぃ](https://github.com/takeokunn)のNixOSの設定も参考にさせてもらいました。
 
 https://github.com/takeokunn/nixos-configuration
+
+## 設定途中の躓き
+
+基本はAsahiさんのデスクトップ環境を構築する記事をベースに設定していき、徐々に普段使っているi3wm環境に置き換えていく作業を行なっていきました。
+私のdotfilesではシェルスクリプトやCLIツールをダウンロードして環境を構築するようにしていたのですが、NixOSという環境では簡単に使わせてくれませんでした。
+
+### nix-ld
+
+私のdotfilesでは次のようなツール郡を使用して、開発環境を整えるようにしていました。
+
+- aqua（cliツール管理）
+  - shell関連のツールはaquaからインストール
+- mise（言語ランタイム管理）
+- Neovim
+
+これらのツールでインストールした物を利用し、メインとなるテキストエディタの環境を補助していた訳ですが、NixOSの環境では外部から落してきたバイナリは動いてくれません。
+NixOSはFHSに準拠していないため、直接実行可能なバイナリを使用すると共有ライブラリが見つからないため、動作しないという現象が発生してしまいます。
+
+```
+❯ nvim
+Could not start dynamically linked executable: nvim
+NixOS cannot run dynamically linked executables intended for generic
+linux environments out of the box. For more information, see:
+https://nix.dev/permalink/stub-ld
+
+---
+
+動的にリンクされた実行可能ファイルを開始できませんでした: nvim
+NixOS は、汎用向けに動的にリンクされた実行可能ファイルを実行できません
+すぐに使える Linux 環境。 詳細については、以下を参照してください。
+https://nix.dev/permalink/stub-ld
+```
+
+上記の内容は、実際にNixOS上でreleaseページからダウンロードしてきたNeovimを使用したときに出るメッセージです。
+エラー内容のリンク先を見に行くと解決方法を教えてくれます。
+
+https://nix.dev/permalink/stub-ld
+
+ざっくり言ってしまえば、次の設定を`/etc/nixos/configuration.nix`に追記して、`nixos-rebuild switch`の実行と、再起動をしてみてください。
+
+```nix
+programs.nix-ld.enable = true;
+```
+
+何ごともなく落してきたバイナリが動きます！
+私が使用している範囲では、上記の設定を入れるだけで問題なく動作しています。
+
+類似内容だと、こちらも参考にしてみてください。
+
+https://zenn.dev/asa1984/scraps/17fe60c1b2ccc2
+
 ## 現在の設定状況
 
 ## これからNixOSを始める人へ
