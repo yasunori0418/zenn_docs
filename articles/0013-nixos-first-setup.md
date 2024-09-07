@@ -49,6 +49,18 @@ https://zenn.dev/asa1984/books/nix-introduction
 
 https://github.com/takeokunn/nixos-configuration
 
+あとはパッケージ検索兼、設定項目の検索もできる公式の検索サイトは手放せないでしょう。
+
+https://search.nixos.org/packages
+
+また、NixOS自体の設定項目の一覧は、Web上で確認できる他、`man`コマンドでも確認できます。
+
+https://nixos.org/manual/nixos/stable/options
+
+```bash
+man 5 configuration.nix
+```
+
 ## 設定途中の躓き
 
 基本はAsahiさんのデスクトップ環境を構築する記事をベースに設定していき、徐々に普段使っているi3wm環境に置き換えていく作業を行なっていきました。
