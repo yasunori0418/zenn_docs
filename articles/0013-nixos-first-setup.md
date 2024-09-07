@@ -29,6 +29,25 @@ ArchLinuxにこれと言った不満は無く、「困ったことがあれば�
 
 ## 参考文献
 
+私がNixOSに移行した際、参考にしたのは次の記事です。
+
+https://zenn.dev/asa1984/articles/nixos-is-the-best
+
+まずは素直にこの記事どおりに、デスクトップ環境込みの状態でインストールを行ないました。
+というのも、近日中にデスクトップ環境が整っていないと困る予定がありました。
+そのためNixOSに慣れるという目的のためにデスクトップ環境がある状態からセットアップをしていく方針にしていきました。
+
+いきなりArchLinuxを使うよりもManjaro辺りで慣らしてから、実際にArchLinux Install Battleするのと似ていますね。
+
+あとは基本を知るという意味で、Nixその物の入門記事として次の記事を暇があれば読んでいます。
+
+https://zenn.dev/asa1984/books/nix-introduction
+
+主にNix言語について知らないことだらけのため、足りない言語知識を埋めるため、言語についての解説ページは何度も見直していました。
+
+あと、Nixを私に勧めてくれた[たけてぃ](https://github.com/takeokunn)のNixOSの設定も参考にさせてもらいました。
+
+https://github.com/takeokunn/nixos-configuration
 ## 現在の設定状況
 
 ## これからNixOSを始める人へ
