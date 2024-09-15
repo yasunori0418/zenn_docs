@@ -204,7 +204,7 @@ https://github.com/yasunori0418/dotfiles/blob/1bff134/nixos/settings/services/op
 
 https://github.com/yasunori0418/dotfiles/blob/1bff134/nixos/settings/services/tlp.nix
 
-このファイルのパスを`imports`に記述するだけで、部分的に重複するAttrSetであってもいい感じにマージしてくれます。
+このファイルのパスを`imports`に記述するだけで、部分的に重複する`AttrSet`であってもいい感じにマージしてくれます。
 結果として内部では次のようになっています。
 
 ```nix:configuration.nix
@@ -257,7 +257,7 @@ https://github.com/yasunori0418/dotfiles/blob/1bff134/nixos/settings/services/tl
 - NixOS => `man 5 configuration.nix`
 - home-manager => `man 5 home-configuration.nix`
 
-`imports`で指定したファイルが関数として読み込むときに、`_module.args`で宣言されているAttrSetを引数に渡してくれます。
+`imports`で指定したファイルが関数として読み込むときに、`_module.args`で宣言されている`AttrSet`を引数に渡してくれます。
 ただ、各ファイルに引数を全部列挙するのは手間ですし、LSPを使っていると使用していない引数が診断に引っ掛って邪魔です。
 
 https://github.com/yasunori0418/dotfiles/blob/1bff134/nixos/settings/fonts.nix
@@ -267,10 +267,25 @@ https://github.com/yasunori0418/dotfiles/blob/1bff134/nixos/settings/fonts.nix
 
 https://zenn.dev/asa1984/books/nix-hands-on/viewer/ch01-01-nix-lang-basics#%E4%BD%99%E5%88%86%E3%81%AAattribute%E3%82%92%E7%84%A1%E8%A6%96%E3%81%99%E3%82%8B
 
-詳しくは上記の内容をご覧頂ければ分かりますが、`pkgs`だけを使用してそれ以外のAttrSetは無視するということを`...`はしています。
+詳しくは上記の内容をご覧頂ければ分かりますが、`pkgs`だけを使用してそれ以外の`AttrSet`は無視するということを`...`はしています。
 `imports`に追加するファイルが関数の場合は、引数には`...`のセットが必須といえるでしょう。
 
-### AttrSetもマージしてくれる？！
+### `AttrSet`もマージしてくれる？！
+
+ここまでの説明で`imports`に記述できるのはファイルパスしか渡せないと思いますが、実は`AttrSet`も含めて大丈夫なのです。
+
+https://github.com/yasunori0418/dotfiles/blob/1bff134/nixos/Desktop/configuration.nix#L20
+
+その証拠に上記のように`import関数`を使ってファイルを読み込み`AttrSet`になった物を`imports`に入れても読み込んでいるのです！
+…とは言っても、公式のWikiにそんな説明が無いので、vim-jpの`#tech-nix`で呟いていたところ、
+nixpkgsコミッターの[natsukium氏](https://github.com/natsukium)からの天の声を頂きました。
+
+`AttrSet`を読み込んでマージしてくれる謎を教えてくれました！
+
+https://github.com/NixOS/nixpkgs/blob/5c7a370a208d93d458193fc05ed84ced0ba7f387/lib/modules.nix#L181-L191
+
+…おっと、Nix力が強すぎて何が書いてあるか分からないかもしれませんが、
+ファイルパスを渡しても最終的に`import関数`を使っているし、`AttrSet`でも読み込んで最終的にマージする処理をしてくれている…ようです。
 
 ## `import関数`
 
