@@ -257,6 +257,19 @@ https://github.com/yasunori0418/dotfiles/blob/1bff134/nixos/settings/services/tl
 - NixOS => `man 5 configuration.nix`
 - home-manager => `man 5 home-configuration.nix`
 
+`imports`で指定したファイルが関数として読み込むときに、`_module.args`で宣言されているAttrSetを引数に渡してくれます。
+ただ、各ファイルに引数を全部列挙するのは手間ですし、LSPを使っていると使用していない引数が診断に引っ掛って邪魔です。
+
+https://github.com/yasunori0418/dotfiles/blob/1bff134/nixos/settings/fonts.nix
+
+ちょうどフォントの設定がそれを回避しています。
+フォントの設定に使用しているのは`pkgs`だけですが、それ以外の引数は`...`というものです。
+
+https://zenn.dev/asa1984/books/nix-hands-on/viewer/ch01-01-nix-lang-basics#%E4%BD%99%E5%88%86%E3%81%AAattribute%E3%82%92%E7%84%A1%E8%A6%96%E3%81%99%E3%82%8B
+
+詳しくは上記の内容をご覧頂ければ分かりますが、`pkgs`だけを使用してそれ以外のAttrSetは無視するということを`...`はしています。
+`imports`に追加するファイルが関数の場合は、引数には`...`のセットが必須といえるでしょう。
+
 ### AttrSetもマージしてくれる？！
 
 ## `import関数`
