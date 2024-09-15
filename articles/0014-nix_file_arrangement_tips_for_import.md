@@ -200,36 +200,26 @@ NixOSをカスタムして触っている`configuration.nix`というのはモ�
 
 次の2つのファイルを見てみましょう。
 
-https://github.com/yasunori0418/dotfiles/blob/1bff134/nixos/settings/systemd/ssh-agent.nix
+https://github.com/yasunori0418/dotfiles/blob/1bff134/nixos/settings/services/openssh.nix
 
-https://github.com/yasunori0418/dotfiles/blob/1bff134/nixos/settings/systemd/polkit-kde-agent.nix
+https://github.com/yasunori0418/dotfiles/blob/1bff134/nixos/settings/services/tlp.nix
 
-このファイルのパスを`imports`に記述するだけで、重複するAttrSetであってもいい感じにマージしてくれます。
+このファイルのパスを`imports`に記述するだけで、部分的に重複するAttrSetであってもいい感じにマージしてくれます。
 結果として内部では次のようになっています。
 
 ```nix:configuration.nix
 {
-  systemd.user.services = {
-    polkit-kde-authentication-agent = {
-      description = "polkit authentication kde agent";
-      wantedBy = [ "graphical-session.target" ];
-      wants = [ "graphical-session.target" ];
-      after = [ "graphical-session.target" ];
-      serviceConfig = {
-        Type = "simple";
-        ExecStart = "${pkgs.libsForQt5.polkit-kde-agent}/libexec/polkit-kde-authentication-agent-1";
-        Restart = "on-failure";
-        RestartSec = 1;
-        TimeoutStopSec = 10;
+  services = {
+    tlp = {
+      enable = true;
+      settings = {
+        # 中略
       };
     };
-    ssh-agent = {
-      description = "SSH key agent";
-      wantedBy = [ "default.target" ];
-      serviceConfig = {
-        Type = "simple";
-        Environment = "SSH_AUTH_SOCK=%t/ssh-agent.socket";
-        ExecStart = "${pkgs.openssh}/bin/ssh-agent -D -a $SSH_AUTH_SOCK";
+    openssh = {
+      enable = true;
+      settings = {
+        # 中略
       };
     };
   };
