@@ -171,7 +171,99 @@ https://zenn.dev/asa1984/books/nix-hands-on
 
 雰囲気としては、Nixを始めた人の第2ステップといった感じでしょうか。
 
-## `import関数`と`imports`
+## `imports`と`import関数`
+
+Nix言語に触れていると最初に遭遇する紛らわしい物です。
+この2つの違いと活用方法を見ていきましょう。
+
+### `imports`
+
+https://nixos.wiki/wiki/NixOS_modules
+
+NixOSをカスタムして触っている`configuration.nix`というのはモジュールであり、
+[NixOS/nixpkgs](https://github.com/NixOS/nixpkgs)でメンテナンスされているモジュールによって定義された設定項目を触っているだけに過ぎません。
+そして`imports`というものは、モジュールの`AttrSet（属性）`の1つでしかありません。
+
+それでは`imports`の役割は何かというと、別のモジュールへのパスを記述することで、そのモジュールによって定義された設定項目を使えるようにするという物になります。
+また読み込もうとしたファイルが関数として記述されていても、次の引数が暗黙的に読み込み先の関数へ渡されます。
+
+- `config`
+- `options`
+- `pkgs`
+- `modulePath`
+
+これらは公式のwikiで列挙されている物で、NixOSとhome-managerの場合で違います。
+`man`で`_module.args`の内容を確認しておきましょう。
+
+- NixOS => `man 5 configuration.nix`
+- home-manager => `man 5 home-configuration.nix`
+
+ですが、`imports`はそれだけでは終りません。
+
+#### 読み込みファイルのマージ機能
+
+別のファイルに記述した設定をマージしてくれる機能があります。
+前述したとおり、`imports`はモジュールの読み込みがメインの機能ではありますが、モジュールによって宣言された設定項目を別のファイルにしても読み込んでくれるのです。
+
+次の2つのファイルを見てみましょう。
+
+https://github.com/yasunori0418/dotfiles/blob/1bff134/nixos/settings/systemd/ssh-agent.nix
+
+https://github.com/yasunori0418/dotfiles/blob/1bff134/nixos/settings/systemd/polkit-kde-agent.nix
+
+このファイルのパスを`imports`に記述するだけで、重複するAttrSetであってもいい感じにマージしてくれます。
+結果として内部では次のようになっています。
+
+```nix:configuration.nix
+{
+  systemd.user.services = {
+    polkit-kde-authentication-agent = {
+      description = "polkit authentication kde agent";
+      wantedBy = [ "graphical-session.target" ];
+      wants = [ "graphical-session.target" ];
+      after = [ "graphical-session.target" ];
+      serviceConfig = {
+        Type = "simple";
+        ExecStart = "${pkgs.libsForQt5.polkit-kde-agent}/libexec/polkit-kde-authentication-agent-1";
+        Restart = "on-failure";
+        RestartSec = 1;
+        TimeoutStopSec = 10;
+      };
+    };
+    ssh-agent = {
+      description = "SSH key agent";
+      wantedBy = [ "default.target" ];
+      serviceConfig = {
+        Type = "simple";
+        Environment = "SSH_AUTH_SOCK=%t/ssh-agent.socket";
+        ExecStart = "${pkgs.openssh}/bin/ssh-agent -D -a $SSH_AUTH_SOCK";
+      };
+    };
+  };
+}
+```
+
+このとき注意すべき点は、トップレベルのAttributeから順番に記述しないといけません。
+
+```nix:systemd/user/services/ssh-agent.nix
+{
+  description = "SSH key agent";
+  wantedBy = [ "default.target" ];
+  serviceConfig = {
+    Type = "simple";
+    Environment = "SSH_AUTH_SOCK=%t/ssh-agent.socket";
+    ExecStart = "${pkgs.openssh}/bin/ssh-agent -D -a $SSH_AUTH_SOCK";
+  };
+}
+```
+
+このようにパスやファイル名と内容からssh-agentのsystemd-unitであることは分かるのですが、このファイルを`imports`に追加してもエラーで読み込んでくれません。
+
+#### AttrSetもマージしてくれる？！
+
+### `import関数`
+
+## `default.nix`
 
 ## `++`や`//`というマージ機能の活用
 
