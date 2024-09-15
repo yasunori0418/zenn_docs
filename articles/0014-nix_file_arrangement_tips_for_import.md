@@ -182,6 +182,40 @@ Nix言語に触れていると最初に遭遇する紛らわしい物です。
 私は1つのファイルに大量の記述がしてある状態が好きではないため、可能な限り分割したい派です。
 雰囲気としては、Nixを始めた人の第2ステップといった感じでしょうか。
 
+## `import関数`
+
+よく勘違いされますが、`import`は関数です。
+よいですか、`import`はNix言語の組込み関数です。
+組込み関数は基本的に`builtins`の`AttrSet`に含まれているのですが、使用頻度が高いため`import`だけで呼び出せるようになっています。
+
+https://nix.dev/manual/nix/2.18/language/builtins#builtins-import
+
+https://zenn.dev/asa1984/books/nix-hands-on/viewer/ch01-02-builtins
+
+詳しくは上記のページの説明をご覧いただければ分かるかと思います。
+
+import関数について簡単に説明しておくと、Nix言語が記述されているファイル読み込み`AttrSet`として使えるようになります。
+よくあるユースケースとしては次のように使用できます。
+
+```nix:foo.nix
+{
+  foo = {
+    hoge = "fuga";
+  };
+}
+```
+
+```nix:configuration.nix
+{
+  hoge = (import ./hoge.nix).foo.hoge;
+}
+```
+
+`foo.nix`を読み込んで、そのまま`foo.hoge`にアクセスしています。
+このとき`configuration.nix`の`hoge`には`"fuga"`という文字列が格納されます。
+
+### `default.nix`
+
 ## `imports`
 
 https://nixos.wiki/wiki/NixOS_modules
@@ -286,40 +320,6 @@ https://github.com/NixOS/nixpkgs/blob/5c7a370a208d93d458193fc05ed84ced0ba7f387/l
 
 …おっと、Nix力が強すぎて何が書いてあるか分からないかもしれませんが、
 ファイルパスを渡しても最終的に`import関数`を使っているし、`AttrSet`でも読み込んで最終的にマージする処理をしてくれている…ようです。
-
-## `import関数`
-
-よく勘違いされますが、`import`は関数です。
-よいですか、`import`はNix言語の組込み関数です。
-組込み関数は基本的に`builtins`の`AttrSet`に含まれているのですが、使用頻度が高いため`import`だけで呼び出せるようになっています。
-
-https://nix.dev/manual/nix/2.18/language/builtins#builtins-import
-
-https://zenn.dev/asa1984/books/nix-hands-on/viewer/ch01-02-builtins
-
-詳しくは上記のページの説明をご覧いただければ分かるかと思います。
-
-import関数について簡単に説明しておくと、Nix言語が記述されているファイル読み込み`AttrSet`として使えるようになります。
-よくあるユースケースとしては次のように使用できます。
-
-```nix:foo.nix
-{
-  foo = {
-    hoge = "fuga";
-  };
-}
-```
-
-```nix:configuration.nix
-{
-  hoge = (import ./hoge.nix).foo.hoge;
-}
-```
-
-`foo.nix`を読み込んで、そのまま`foo.hoge`にアクセスしています。
-このとき`configuration.nix`の`hoge`には`"fuga"`という文字列が格納されます。
-
-### `default.nix`
 
 ## `++`や`//`というマージ機能の活用
 
