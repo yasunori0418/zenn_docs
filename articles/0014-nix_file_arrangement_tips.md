@@ -31,10 +31,13 @@ https://zenn.dev/asa1984/books/nix-hands-on
 - ファイルは分割しないと落ち着かない人
 - Nix言語に慣れていきたい人
 
-:::details この状態が我慢できない人
+下記は長すぎるため、更に折り畳みに折り畳んでいます。
+::::details この状態が我慢できない人
 
 これは私の`/etc/nixos/configuration.nix`の残骸です。
 現在は、flake化に伴い使用されていません。
+
+:::details configuration.nix
 
 ```nix:configuration.nix
 # Edit this configuration file to define what should be installed on
@@ -167,8 +170,11 @@ https://zenn.dev/asa1984/books/nix-hands-on
 ```
 
 :::
+
+::::
 <!-- textlint-enable -->
 
+私は1つのファイルに大量の記述がしてある状態が好きではないため、可能な限り分割したい派です。
 雰囲気としては、Nixを始めた人の第2ステップといった感じでしょうか。
 
 ## `imports`と`import関数`
@@ -258,6 +264,8 @@ https://github.com/yasunori0418/dotfiles/blob/1bff134/nixos/settings/systemd/pol
 ```
 
 このようにパスやファイル名と内容からssh-agentのsystemd-unitであることは分かるのですが、このファイルを`imports`に追加してもエラーで読み込んでくれません。
+
+#### 関数として宣言したファイルの読み込み
 
 #### AttrSetもマージしてくれる？！
 
