@@ -22,12 +22,22 @@ https://zenn.dev/asa1984/books/nix-hands-on
 
 早速ですが、先日公開された「Nix入門：ハンズオン」は是非一読していただきたいです。
 上記の本で紹介されているNix言語の文法を元に、私が使用している内容に触れていきます。
-この記事ではNixOSやhome-managerといった物に触れるということはせず、ファイル分割や設定のまとめ方を共有していきます。
+~~この記事ではNixOSやhome-managerといった物に触れるということはせず、ファイル分割や設定のまとめ方を共有していきます。~~
 
 …で、書いている最中に文章量がえげつないことになってきたので、今回は`import関数`と`imports`に絞っていきます。
 
 Nix言語に触れていると最初に遭遇する紛らわしい物です。
 この2つの違いと活用方法を見ていきましょう。
+
+<!-- textlint-disable -->
+:::message
+**追記 2024/09/16 16:00**
+
+この記事における`imports`の説明は主にNixOSのモジュールシステムとしての物になります。
+詳細については、「[補足（home-managerについて）](#補足（home-managerについて）)」の章をご覧ください。
+※ 以上、[natsukium氏](https://github.com/natsukium)からの~~天の声~~情報提供でした。
+:::
+<!-- textlint-enable -->
 
 ### 対象読者
 
@@ -341,6 +351,20 @@ https://github.com/NixOS/nixpkgs/blob/5c7a370a208d93d458193fc05ed84ced0ba7f387/l
 
 …おっと、Nix力が強すぎて何が書いてあるか分からないかもしれませんが、
 ファイルパスを渡しても最終的に`import関数`を使っているし、`AttrSet`でも読み込んで最終的にマージする処理をしてくれている…ようです。
+
+### 補足（home-managerについて）
+
+`imports`の最初で説明したように、`imports`自体はNixOSのモジュールとしての機能になります。
+しかしhome-managerでも同じことができていますが、これはどういうことでしょうか。
+
+実はhome-manager自体もNixOSのモジュールシステムを利用して作られているため、同じ文法で設定の定義が可能になっています。
+
+https://github.com/nix-community/home-manager/blob/a9c9cc6e50f7cbd2d58ccb1cd46a1e06e9e445ff/modules/default.nix#L26-L30
+
+https://github.com/NixOS/nixpkgs/blob/4c8203436897b2d6de8091e65b0c02d962c6e508/lib/modules.nix#L77C71-L85
+
+詳しい理由に関しては、上記のコードを見ることで分かるそう…ですが、またNix力が強くて難しいと感じてしまうかもしれません。
+とりあえず、NixOSのモジュールシステムを利用しているということが分かれば大丈夫かと思います。
 
 ## まとめ
 
