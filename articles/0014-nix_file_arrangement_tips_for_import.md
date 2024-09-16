@@ -216,6 +216,27 @@ import関数について簡単に説明しておくと、Nix言語が記述さ�
 
 ### `default.nix`
 
+`import関数`は基本Nix言語が記述されたファイルを読み込む物ですが、ディレクトリに`default.nix`というファイルがあった場合は、
+インポート時にそのディレクトリを指定すれば`default.nix`を読み込んでくれます。
+
+https://zenn.dev/asa1984/books/nix-introduction/viewer/09-nix-lang#import%E9%96%A2%E6%95%B0
+
+その辺の挙動の説明については、上記のリンクを参照してもらうと分かりやすいです。
+
+私の場合、home-managerの設定で次のような使い方をしています。
+
+https://github.com/yasunori0418/dotfiles/blob/1bff134/flake.nix#L68-L82
+
+https://github.com/yasunori0418/dotfiles/blob/1bff134/home-manager/default.nix
+
+このとき、追う順番として次のようになります。
+
+1. `home-manager/default.nix`に`home-manager.lib.homeManagerConfiguration`という関数に渡す引数部分を定義
+1. `flake.nix`内で`home-manager/default.nix`をインポートして、定義しておいたAttrSetを引数に渡す
+
+さらに`default.nix`を使っていろいろしているのですが、蛇足になってしまいまうのでここまでの解説にします。
+つまりdefault.nixは共通的な処理を書くときや、インポートしている箇所をシンプルにしたいとき便利ということが伝わればよいです！
+
 ## `imports`
 
 https://nixos.wiki/wiki/NixOS_modules
